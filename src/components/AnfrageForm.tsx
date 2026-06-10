@@ -31,8 +31,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [submittedInquiries, setSubmittedInquiries] = useState<InquiryFormData[]>([]);
-  const [isFormspreeActive, setIsFormspreeActive] = useState(false);
-  const [formspreeId, setFormspreeId] = useState('YOUR_FORMSPREE_ID');
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Load existing test submissions from localStorage
   useEffect(() => {
@@ -108,21 +107,45 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate reliable submitting delay
-    setTimeout(() => {
-      const updatedInquiries = [formData, ...submittedInquiries];
-      setSubmittedInquiries(updatedInquiries);
-      localStorage.setItem('giessen_fenster_inquiries', JSON.stringify(updatedInquiries));
-      
+    try {
+      const response = await fetch('https://formspree.io/f/mpqelgod', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          Name: formData.fullName,
+          Email: formData.email,
+          Telefon: formData.phone,
+          Bereich: formData.serviceType,
+          PLZ: formData.zipCode,
+          Ort: formData.city || zipResult?.recommendedCity || '',
+          Nachricht: formData.details,
+        }),
+      });
+
+      if (response.ok) {
+        const updatedInquiries = [formData, ...submittedInquiries];
+        setSubmittedInquiries(updatedInquiries);
+        localStorage.setItem('giessen_fenster_inquiries', JSON.stringify(updatedInquiries));
+        setIsSuccess(true);
+      } else {
+        const data = await response.json().catch(() => ({}));
+        setSubmitError(data.errors?.[0]?.message || data.error || 'Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.');
+      }
+    } catch (err) {
+      setSubmitError('Verbindungsfehler. Bitte überprüfen Sie Ihre Internetverbindung.');
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1200);
+    }
   };
 
   const resetForm = () => {
@@ -137,6 +160,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
       gdprConsent: false,
     });
     setZipResult(null);
+    setSubmitError(null);
     setIsSuccess(false);
   };
 
@@ -210,22 +234,11 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
           {/* Form Right Pillar: Actual interactive inquiry submission form */}
           <div className="lg:col-span-7 bg-[#242A2E] p-6 sm:p-10 rounded-3xl border border-white/10 relative shadow-2xl" id="interactive-inquiry-box">
             
-            {/* Top Configurator Selector for Formspree simulation vs real Formspree action */}
             <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-8 text-xs">
               <div className="flex items-center space-x-2 text-slate-300">
                 <ClipboardList size={14} className="text-blue-400" />
-                <span>Simulations-Modus (Formular testen)</span>
+                <span>Anfrage-Formular (Echtzeit-Übermittlung aktiv)</span>
               </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  checked={isFormspreeActive} 
-                  onChange={() => setIsFormspreeActive(!isFormspreeActive)} 
-                  className="sr-only peer" 
-                />
-                <div className="w-9 h-5 bg-black/40 border border-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-500 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600 peer-checked:after:bg-slate-900"></div>
-                <span className="ml-2 text-[11px] text-slate-300 font-medium font-sans">Echt-Übermittlung</span>
-              </label>
             </div>
 
             <AnimatePresence mode="wait">
@@ -236,33 +249,15 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  {/* Real Formspree HTML form if selected, otherwise fallback React simulation form */}
                   <form
-                    onSubmit={isFormspreeActive ? undefined : handleSubmit}
-                    action={isFormspreeActive ? `https://formspree.io/f/mpqelgod` : undefined}
-                    method={isFormspreeActive ? 'POST' : undefined}
+                    onSubmit={handleSubmit}
                     className="space-y-6"
                     id="giessen-anfrage-form"
                   >
-                    {isFormspreeActive && (
-                      <div className="bg-sky-500/10 border border-sky-400/25 p-4 rounded-xl space-y-3.5 mb-6">
-                        <div className="flex items-start">
-                          <MapPin size={16} className="text-sky-400 mr-2 shrink-0 mt-0.5" />
-                          <p className="text-xs text-slate-250 leading-relaxed">
-                            <strong>Echt-Übermittlungsmodus aktiv:</strong> Wenn Sie diese Seite auf Ihre eigene GitHub Pages Präsenz deployen, wird dieses Formular direkt über Ihre angegebene <strong>Formspree ID</strong> an Ihr E-Mail-Postfach gesendet.
-                          </p>
-                        </div>
-                        <div>
-                          <label className="block text-[10px] uppercase font-bold text-sky-400 mb-1 tracking-wider">Formspree Endpunkt ID:</label>
-                          <input 
-                            name="_formspree_id"
-                            type="text" 
-                            value={formspreeId} 
-                            onChange={(e) => setFormspreeId(e.target.value)} 
-                            className="bg-slate-950 border border-slate-800 text-white text-xs rounded px-2.5 py-1 w-full font-mono focus:border-sky-500 focus:outline-none"
-                            placeholder="z.B. xgepobey"
-                          />
-                        </div>
+                    {submitError && (
+                      <div className="bg-red-500/10 border border-red-400/25 p-4 rounded-xl flex items-start space-x-2.5 text-xs text-red-200">
+                        <AlertCircle size={16} className="text-red-400 shrink-0 mt-0.5" />
+                        <span>{submitError}</span>
                       </div>
                     )}
 
