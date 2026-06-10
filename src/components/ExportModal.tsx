@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Download, Copy, Check, X, FileCode, Cpu, Code } from 'lucide-react';
+import { Download, Copy, Check, X, FileCode, Cpu, Code, Globe, Mail } from 'lucide-react';
 
 interface ExportModalProps {
   isOpen: boolean;
@@ -8,7 +8,7 @@ interface ExportModalProps {
 }
 
 export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
-  const [activeTab, setActiveTab] = useState<'single' | 'split'>('single');
+  const [activeTab, setActiveTab] = useState<'code' | 'ionos'>('code');
   const [copiedType, setCopiedType] = useState<string | null>(null);
 
   const handleCopy = (text: string, type: string) => {
@@ -535,8 +535,8 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
               <Code size={20} className="text-slate-950" />
             </div>
             <div>
-              <h3 className="font-sans font-bold text-lg leading-tight">GitHub Pages Exporter</h3>
-              <p className="text-xs text-slate-300">Generierter statischer HTML-Code für Ihre Webpräsenz</p>
+              <h3 className="font-sans font-bold text-lg leading-tight">Yayınlama ve Kurulum Merkezi</h3>
+              <p className="text-xs text-slate-300">Statik kod paketleyici ve IONOS alan adı yapılandırma merkezi</p>
             </div>
           </div>
           <button
@@ -547,44 +547,202 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
           </button>
         </div>
 
-        {/* Info panel */}
-        <div className="bg-slate-50 border-b p-5 text-xs text-slate-600 flex items-start space-x-3">
-          <Cpu className="text-sky-500 mt-0.5 shrink-0" size={16} />
-          <p className="leading-relaxed">
-            Als Web-Entwickler habe ich eine **vollständig optimierte und responsive Version** der gesamten Zenit Bau Homepage als **Single-File-HTML** kompiliert. Alle Designs, responsive Grids, Hamburger Menüs, Live Postleitzahlen-Schnittstellen und Formspree-Schnittstellen sind vollständig implementiert. Kopieren Sie den Code einfach in Ihre `index.html` Datei und laden Sie diese direkt auf GitHub Pages hoch!
-          </p>
+        {/* Tab Selector */}
+        <div className="flex border-b border-slate-200 shrink-0 px-6 bg-slate-50 gap-2">
+          <button
+            onClick={() => setActiveTab('code')}
+            className={`py-3 px-4 font-sans font-bold text-xs uppercase tracking-wider border-b-2 flex items-center space-x-2 transition-colors cursor-pointer ${
+              activeTab === 'code'
+                ? 'border-sky-500 text-sky-600'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            <FileCode size={14} />
+            <span>1. index.html Quellcode</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('ionos')}
+            className={`py-3 px-4 font-sans font-bold text-xs uppercase tracking-wider border-b-2 flex items-center space-x-2 transition-colors cursor-pointer ${
+              activeTab === 'ionos'
+                ? 'border-sky-500 text-sky-600'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            <Globe size={14} />
+            <span>2. IONOS Alan Adı & E-Posta Ayarları (Seçenek A)</span>
+          </button>
         </div>
 
-        {/* Code tabs */}
-        <div className="flex-grow flex flex-col min-h-0 bg-slate-950 text-slate-300">
-          <div className="bg-slate-900 border-b border-slate-800 px-6 py-3 flex justify-between items-center shrink-0">
-            <span className="font-mono text-xs text-sky-400 font-semibold tracking-wider flex items-center">
-              <FileCode size={14} className="mr-1.5" />
-              index.html (Zusammengeführter Code)
-            </span>
-            <div className="flex space-x-3">
-              <button
-                onClick={() => handleCopy(singleFileTemplate, 'single')}
-                className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold text-xs py-1.5 px-4 rounded-md flex items-center space-x-1.5 cursor-pointer shadow transition-all"
-              >
-                {copiedType === 'single' ? <Check size={14} /> : <Copy size={14} />}
-                <span>{copiedType === 'single' ? 'Kopiert!' : 'Code kopieren'}</span>
-              </button>
+        {activeTab === 'code' ? (
+          <>
+            {/* Info panel */}
+            <div className="bg-slate-50 border-b p-5 text-xs text-slate-600 flex items-start space-x-3 shrink-0">
+              <Cpu className="text-sky-500 mt-0.5 shrink-0" size={16} />
+              <p className="leading-relaxed">
+                Als Web-Entwickler habe ich eine **vollständig optimierte und responsive Version** der gesamten Zenit Bau Homepage als **Single-File-HTML** kompiliert. Alle Designs, responsive Grids, Hamburger Menüs, Live Postleitzahlen-Schnittstellen und Formspree-Schnittstellen sind vollständig implementiert. Kopieren Sie den Code einfach in Ihre `index.html` Datei und laden Sie diese direkt auf GitHub Pages hoch!
+              </p>
+            </div>
+
+            {/* Code tabs */}
+            <div className="flex-grow flex flex-col min-h-0 bg-slate-950 text-slate-300">
+              <div className="bg-slate-900 border-b border-slate-800 px-6 py-3 flex justify-between items-center shrink-0">
+                <span className="font-mono text-xs text-sky-400 font-semibold tracking-wider flex items-center">
+                  <FileCode size={14} className="mr-1.5" />
+                  index.html (Zusammengeführter Code)
+                </span>
+                <div className="flex space-x-3">
+                  <button
+                    onClick={() => handleCopy(singleFileTemplate, 'single')}
+                    className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold text-xs py-1.5 px-4 rounded-md flex items-center space-x-1.5 cursor-pointer shadow transition-all"
+                  >
+                    {copiedType === 'single' ? <Check size={14} /> : <Copy size={14} />}
+                    <span>{copiedType === 'single' ? 'Kopiert!' : 'Code kopieren'}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Text Code Block display container */}
+              <div className="flex-grow overflow-auto p-6 font-mono text-[11px] sm:text-xs leading-relaxed max-h-[40vh] bg-slate-950 text-slate-200 divide-y divide-slate-900 selection:bg-sky-500/25">
+                <pre className="whitespace-pre">{singleFileTemplate}</pre>
+              </div>
+            </div>
+          </>
+        ) : (
+          /* IONOS SEÇENEK A KILAVUZU */
+          <div className="flex-grow overflow-auto p-6 sm:p-8 bg-slate-900 text-slate-200 min-h-0">
+            <div className="max-w-2xl mx-auto space-y-6">
+              <div>
+                <span className="text-sky-400 font-mono text-[10px] font-bold uppercase tracking-wider block mb-1">Seçenek A Kurulum Kılavuzu</span>
+                <h4 className="text-base sm:text-lg font-bold font-sans text-white">IONOS Alan Adı (zenit-bau.de) Yapılandırması</h4>
+                <p className="text-xs text-slate-400 leading-relaxed mt-1">
+                  Satın almış olduğunuz <strong className="text-white">zenit-bau.de</strong> alan adını web sitenize bağlamak ve saniyeler içinde <strong className="text-white">info@zenit-bau.de</strong> e-posta adresini ücretsiz kurmak için aşağıdaki DNS talimatlarını IONOS panelinizde tanımlayın.
+                </p>
+              </div>
+
+              {/* Step 1 */}
+              <div className="bg-slate-950 p-4 sm:p-5 rounded-2xl border border-slate-800 space-y-3">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-6 h-6 rounded-full bg-sky-500/10 border border-sky-400/25 flex items-center justify-center text-sky-400 text-xs font-bold shrink-0">1</div>
+                  <h5 className="font-bold text-xs sm:text-sm text-white">Web Sitenizi Alan Adınıza Bağlayın (DNS A & CNAME)</h5>
+                </div>
+                <p className="text-xs text-slate-400">
+                  IONOS Müşteri Paneli &gt; Alan Adları (Domains) &gt; <strong className="text-slate-350">zenit-bau.de</strong> &gt; DNS bölümüne gidip aşağıdaki kayıtları ekleyin veya düzenleyin:
+                </p>
+                
+                <div className="space-y-3 pt-1">
+                  <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 font-mono text-[10px] leading-relaxed">
+                    <div className="grid grid-cols-12 gap-1 border-b border-white/5 pb-2 mb-2 font-bold text-[9px] text-slate-400 uppercase tracking-wider">
+                      <div className="col-span-3">Kayıt Tipi</div>
+                      <div className="col-span-3">Host / İsim</div>
+                      <div className="col-span-6">Yönlenen Değer (Points To)</div>
+                    </div>
+
+                    <div className="grid grid-cols-12 gap-1 py-1">
+                      <div className="col-span-3 text-sky-450 font-bold">A</div>
+                      <div className="col-span-3 text-slate-300">@</div>
+                      <div className="col-span-6 text-white font-bold select-all">185.199.108.153</div>
+                    </div>
+                    <div className="grid grid-cols-12 gap-1 py-1">
+                      <div className="col-span-3 text-sky-450 font-bold">A</div>
+                      <div className="col-span-3 text-slate-300">@</div>
+                      <div className="col-span-6 text-white font-bold select-all">185.199.109.153</div>
+                    </div>
+                    <div className="grid grid-cols-12 gap-1 py-1">
+                      <div className="col-span-3 text-sky-450 font-bold">A</div>
+                      <div className="col-span-3 text-slate-300">@</div>
+                      <div className="col-span-6 text-white font-bold select-all">185.199.110.153</div>
+                    </div>
+                    <div className="grid grid-cols-12 gap-1 py-1">
+                      <div className="col-span-3 text-sky-450 font-bold">A</div>
+                      <div className="col-span-3 text-slate-300">@</div>
+                      <div className="col-span-6 text-white font-bold select-all">185.199.111.153</div>
+                    </div>
+
+                    <div className="border-t border-white/5 my-1.5"></div>
+
+                    <div className="grid grid-cols-12 gap-1 py-1">
+                      <div className="col-span-3 text-sky-450 font-bold">CNAME</div>
+                      <div className="col-span-3 text-slate-300">www</div>
+                      <div className="col-span-6 text-white font-bold select-all">zenit-bau.de.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="bg-slate-950 p-4 sm:p-5 rounded-2xl border border-slate-800 space-y-3">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-6 h-6 rounded-full bg-sky-500/10 border border-sky-400/25 flex items-center justify-center text-sky-400 text-xs font-bold shrink-0">2</div>
+                  <h5 className="font-bold text-xs sm:text-sm text-white flex items-center space-x-1.5">
+                    <Mail size={14} className="text-sky-400" />
+                    <span>info@zenit-bau.de adresi için Ücretsiz Yönlendirme (ImprovMX)</span>
+                  </h5>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Ekstra e-posta servis ücreti vermeden, <strong className="text-white">info@zenit-bau.de</strong> adresine gönderilen tüm postaları kendi Gmail adresiniz olan <strong className="text-white">hamdonmez@gmail.com</strong> adresine anlık olarak ücretsiz yönlendirmek için en popüler aracı kurum <strong className="text-white">ImprovMX</strong>'i kullanıyoruz.
+                </p>
+
+                <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl text-xs text-slate-300 space-y-1.5 leading-relaxed">
+                  <p className="font-bold text-white">Yönlendirme Kurulum Adımları:</p>
+                  <ol className="list-decimal pl-4 space-y-1 text-slate-350">
+                    <li><a href="https://improvmx.com" target="_blank" rel="noreferrer" className="text-sky-400 underline hover:text-sky-300 font-bold font-mono">improvmx.com</a> adresine gidin.</li>
+                    <li>Karşınıza çıkan kutularda Domain bölümüne <code className="bg-black/50 px-1.5 py-0.5 rounded text-white font-mono">zenit-bau.de</code>, yönlendirilecek e-posta bölümüne ise <code className="bg-black/50 px-1.5 py-0.5 rounded text-white font-mono">hamdonmez@gmail.com</code> yazın.</li>
+                    <li>Saniyeler içinde e-posta adresinize bir onay bağlantısı gelecektir, ona tıklayıp onaylayın.</li>
+                    <li>Şimdi, IONOS DNS alanında aşağıdaki MX ve TXT kayıtlarını tanımlayarak yönlendirmeyi aktif edin:</li>
+                  </ol>
+                </div>
+
+                <div className="space-y-3 pt-1">
+                  <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 font-mono text-[10px] leading-relaxed">
+                    <div className="grid grid-cols-12 gap-1 border-b border-white/5 pb-2 mb-2 font-bold text-[9px] text-slate-400 uppercase tracking-wider">
+                      <div className="col-span-2">Tipi</div>
+                      <div className="col-span-2">Host</div>
+                      <div className="col-span-6">Deger / Hedef</div>
+                      <div className="col-span-2 text-right">Öncelik</div>
+                    </div>
+
+                    <div className="grid grid-cols-12 gap-1 py-1">
+                      <div className="col-span-2 text-emerald-400 font-bold">MX</div>
+                      <div className="col-span-2 text-slate-300">@</div>
+                      <div className="col-span-6 text-white font-bold select-all">mx1.improvmx.com.</div>
+                      <div className="col-span-2 text-white text-right font-bold">10</div>
+                    </div>
+                    <div className="grid grid-cols-12 gap-1 py-1">
+                      <div className="col-span-2 text-emerald-400 font-bold">MX</div>
+                      <div className="col-span-2 text-slate-300">@</div>
+                      <div className="col-span-6 text-white font-bold select-all">mx2.improvmx.com.</div>
+                      <div className="col-span-2 text-white text-right font-bold">20</div>
+                    </div>
+
+                    <div className="border-t border-white/5 my-1.5"></div>
+
+                    <div className="grid grid-cols-12 gap-1 py-1">
+                      <div className="col-span-2 text-emerald-400 font-bold">TXT</div>
+                      <div className="col-span-2 text-slate-300">@</div>
+                      <div className="col-span-8 text-white font-bold select-all font-sans text-xs">v=spf1 include:spf.improvmx.com ~all</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-500/10 border border-blue-400/20 p-4 rounded-xl text-xs text-slate-300 flex items-start space-x-2.5">
+                <span className="text-sky-400 text-base leading-none">ℹ</span>
+                <p className="leading-relaxed">
+                  <strong>Bilgi:</strong> Yapılan DNS değişikliklerinin tüm dünya genelinde etkinleşmesi ve e-posta yönlendirmelerinizin çalışmaya başlaması IONOS üzerindeki sunucu yoğunluğuna göre **5 dakika ile birkaç saat** arasında sürebilir.
+                </p>
+              </div>
             </div>
           </div>
-
-          {/* Text Code Block display container */}
-          <div className="flex-grow overflow-auto p-6 font-mono text-[11px] sm:text-xs leading-relaxed max-h-[45vh] bg-slate-950 text-slate-200 divide-y divide-slate-900 selection:bg-sky-500/25">
-            <pre className="whitespace-pre">{singleFileTemplate}</pre>
-          </div>
-        </div>
+        )}
 
         {/* Footer actions */}
         <div className="bg-slate-50 border-t p-5 flex justify-between items-center shrink-0">
-          <span className="text-[11px] text-slate-450 italic">✓ Inklusive Formspree Action Validierung & Gießen PLZ Check</span>
+          <span className="text-[11px] text-slate-500 italic">
+            {activeTab === 'code' ? '✓ Inklusive Formspree Action Validierung & Gießen PLZ Check' : '✓ IONOS & ImprovMX DNS yönlendirmeleri hazır'}
+          </span>
           <button
             onClick={onClose}
-            className="bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold py-2.5 px-6 rounded-lg transition-all"
+            className="bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold py-2.5 px-6 rounded-lg transition-all cursor-pointer"
           >
             Zurück zur Vorschau
           </button>
