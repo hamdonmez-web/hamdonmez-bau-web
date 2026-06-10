@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, ExternalLink, ShieldAlert, BookOpen, GraduationCap, Code } from 'lucide-react';
 import ExportModal from './ExportModal';
+import Logo from './Logo';
 
 export default function Footer() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,16 +15,8 @@ export default function Footer() {
           
           {/* Col 1: About & Info Gießen */}
           <div className="md:col-span-4 space-y-5">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
-                <div className="w-4 h-4 border border-white relative flex items-center justify-center">
-                  <div className="absolute left-0 right-0 h-[1px] bg-white top-1/2 -translate-y-1/2"></div>
-                  <div className="absolute top-0 bottom-0 w-[1px] bg-white left-1/2 -translate-x-1/2"></div>
-                </div>
-              </div>
-              <span className="font-sans font-extrabold text-white text-md tracking-wide">
-                FENSTER & TÜREN ZENIT BAU
-              </span>
+            <div className="flex items-center">
+              <Logo size="sm" variant="dark" />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
               Ihr zertifizierter Premium-Anbieter für hocheffiziente Hebe-Schiebetüren, moderne Renovierungsfenster, schallgedämmte Haustüren und meisterhafte RAL-Demontage und -Neumontage in ganz Mittelhessen.

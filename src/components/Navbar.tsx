@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Phone, ShieldCheck, MapPin } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,24 +73,10 @@ export default function Navbar() {
           {/* Logo Section */}
           <a
             onClick={() => handleScrollTo('#home')}
-            className="flex items-center space-x-3 cursor-pointer group"
+            className="flex items-center cursor-pointer group"
             id="nav-logo-link"
           >
-            {/* Visual Icon representing a solid Window/Door intersection */}
-            <div className="w-10 h-10 bg-[#383e42] flex items-center justify-center rounded shadow-sm group-hover:bg-[#2563eb] transition-colors">
-              <div className="w-6 h-6 border-2 border-white relative flex items-center justify-center">
-                <div className="absolute left-0 right-0 h-[2px] bg-white top-1/2 -translate-y-1/2"></div>
-                <div className="absolute top-0 bottom-0 w-[2px] bg-white left-1/2 -translate-x-1/2"></div>
-              </div>
-            </div>
-            <div>
-              <span className="font-sans font-bold text-lg text-[#383e42] leading-none block tracking-tight group-hover:text-blue-600 transition-colors uppercase">
-                Zenit<span className="text-blue-600"> Bau</span>
-              </span>
-              <span className="font-sans text-[10px] text-gray-500 uppercase tracking-widest font-semibold block leading-none mt-1">
-                Fenster & Türen Fachbetrieb
-              </span>
-            </div>
+            <Logo size="sm" variant="light" />
           </a>
 
           {/* Desktop Navigation */}

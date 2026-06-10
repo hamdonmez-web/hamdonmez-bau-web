@@ -75,16 +75,26 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
     <!-- Main Navigation Bar -->
     <header class="bg-[#1a2332]/95 backdrop-blur-md sticky top-0 z-40 border-b border-slate-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#home" class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-sky-500 rounded flex items-center justify-center">
-                    <div class="w-6 h-6 border-2 border-white relative flex items-center justify-center">
-                        <div class="absolute left-0 right-0 h-[2px] bg-white top-1/2 -translate-y-1/2"></div>
-                        <div class="absolute top-0 bottom-0 w-[2px] bg-white left-1/2 -translate-x-1/2"></div>
+            <a href="#home" class="flex items-center space-x-2">
+                <svg viewBox="0 0 260 140" class="h-10 w-auto text-sky-400 shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 20 115 L 100 35 L 180 115" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 105 115 L 155 75 L 205 115" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 20 115 H 250" stroke="currentColor" stroke-width="7" stroke-linecap="round" />
+                </svg>
+                <div class="flex flex-col justify-center leading-none mt-0.5 shrink-0 select-none">
+                    <div class="text-xs sm:text-sm font-semibold tracking-[0.2em] text-white uppercase flex items-center font-serif">
+                        <span>Z&nbsp;E&nbsp;N&nbsp;</span>
+                        <span class="relative inline-block">
+                            <span class="absolute -top-1.5 left-1/2 -translate-x-[45%] flex items-center justify-center text-sky-400 w-2.5 h-2.5">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><circle cx="12" cy="12" r="3.5" /><line x1="12" y1="4" x2="12" y2="2" /><line x1="12" y1="20" x2="12" y2="22" /><line x1="4" y1="12" x2="2" y2="12" /><line x1="20" y1="12" x2="22" y2="12" /></svg>
+                            </span>
+                            I
+                        </span>
+                        <span>&nbsp;T&nbsp;&nbsp;&nbsp;B&nbsp;A&nbsp;U</span>
                     </div>
-                </div>
-                <div>
-                    <span class="font-sans font-bold text-base sm:text-lg text-white block tracking-wide">ZENIT BAU</span>
-                    <span class="font-mono text-[10px] text-sky-400 tracking-widest font-bold block uppercase">Fenster & Türen</span>
+                    <div class="text-[7px] sm:text-[8px] tracking-[0.32em] text-slate-450 uppercase font-sans mt-0.5">
+                        Bis zum Zenit
+                    </div>
                 </div>
             </a>
 
