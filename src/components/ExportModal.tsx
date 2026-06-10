@@ -728,7 +728,14 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
               <div className="bg-blue-500/10 border border-blue-400/20 p-4 rounded-xl text-xs text-slate-300 flex items-start space-x-2.5">
                 <span className="text-sky-400 text-base leading-none">ℹ</span>
                 <p className="leading-relaxed">
-                  <strong>Bilgi:</strong> Yapılan DNS değişikliklerinin tüm dünya genelinde etkinleşmesi ve e-posta yönlendirmelerinizin çalışmaya başlaması IONOS üzerindeki sunucu yoğunluğuna göre **5 dakika ile birkaç saat** arasında sürebilir.
+                  <strong>Kritik Bilgi (Adres Çubuğunun Değişmesini Engelleme):</strong>
+                  <br />
+                  Tarayıcınızda <code className="bg-black/40 px-1 rounded text-sky-300 font-mono">zenit-bau.de</code> yazınca adresin <code className="bg-slate-950 px-1 rounded text-red-300 font-mono">hamdonmez-web.github.io...</code> olarak <strong>gözükmesini / değişmesini engellemek</strong> ve web sitenizin tamamen kendi alan adınız üzerinden çalışmasını sağlamak için şu iki hususa dikkat etmelisiniz:
+                  <ul className="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>IONOS Yönlendirmesini Devre Dışı Bırakın:</strong> IONOS panelinde bu alan adı için ayarlanmış bir <em>"HTTP-Weiterleitung" (Yönlendirme)</em> varsa bunu kesinlikle <strong>silin veya devre dışı bırakın</strong>. Alan adınız yalnızca yukarıda listenen DNS A ve CNAME kayıtlarını kullanmalıdır!</li>
+                    <li><strong>GitHub Pages Ayarlarında Custom Domain Etkinleştirin:</strong> GitHub'da projenizin deposuna gidin, <strong>Settings</strong> &gt; sol menüden <strong>Pages</strong> adımlarını takip edin. <strong>"Custom domain"</strong> kutusuna <code className="bg-black/40 px-1.5 py-0.5 rounded text-white font-mono">zenit-bau.de</code> yazıp <strong>Save</strong> butonuna basın. Ardından <strong>Enforce HTTPS</strong> kutusunu da işaretleyin.</li>
+                  </ul>
+                  <span className="block mt-2 font-semibold">Senkronizasyon Süresi:</span> Yapılan DNS değişikliklerinin tüm dünya genelinde etkinleşmesi ve internet sağlayıcıları tarafından tanınması IONOS sunucu yapısına göre <strong>5 dakika ile birkaç saat</strong> arasında sürebilir.
                 </p>
               </div>
             </div>
