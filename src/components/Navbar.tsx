@@ -84,7 +84,7 @@ export default function Navbar() {
             </div>
             <div>
               <span className="font-sans font-bold text-lg text-[#383e42] leading-none block tracking-tight group-hover:text-blue-600 transition-colors uppercase">
-                Gießen<span className="text-blue-600">Bauelemente</span>
+                Zenit<span className="text-blue-600"> Bau</span>
               </span>
               <span className="font-sans text-[10px] text-gray-500 uppercase tracking-widest font-semibold block leading-none mt-1">
                 Fenster & Türen Fachbetrieb

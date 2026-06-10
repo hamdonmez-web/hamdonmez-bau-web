@@ -25,7 +25,7 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fenster & Türen Gießen | Ihr regionaler Fachbetrieb</title>
+    <title>Zenit Bau | Ihr regionaler Fachbetrieb</title>
     <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
@@ -83,8 +83,8 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
                     </div>
                 </div>
                 <div>
-                    <span class="font-sans font-bold text-base sm:text-lg text-white block tracking-wide">FENSTER & TÜREN</span>
-                    <span class="font-mono text-[10px] text-sky-400 tracking-widest font-bold block uppercase">Gießen</span>
+                    <span class="font-sans font-bold text-base sm:text-lg text-white block tracking-wide">ZENIT BAU</span>
+                    <span class="font-mono text-[10px] text-sky-400 tracking-widest font-bold block uppercase">Fenster & Türen</span>
                 </div>
             </a>
 
@@ -365,7 +365,7 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
     <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-16 text-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="space-y-4">
-                <span class="font-bold text-white block">Fenster & Türen Gießen</span>
+                <span class="font-bold text-white block">Zenit Bau</span>
                 <p class="text-xs text-slate-450 leading-relaxed">
                     Ihr zertifizierter Partner für energieeffiziente Bauelemente, Renovierungsfenster, schallgedämmte Haustüren und meisterhafte RAL-Montage in ganz Mittelhessen.
                 </p>
@@ -393,7 +393,7 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
                 <div class="text-xs text-slate-450 space-y-2.5">
                     <a href="#" class="block hover:text-white transition-colors">Impressum</a>
                     <a href="#" class="block hover:text-white transition-colors">Datenschutzerklärung</a>
-                    <p class="text-[10px] text-slate-500 mt-4">&copy; 2026 Fenster & Türen Gießen. Alle Rechte vorbehalten.</p>
+                    <p class="text-[10px] text-slate-500 mt-4">&copy; 2026 Zenit Bau. Alle Rechte vorbehalten.</p>
                 </div>
             </div>
         </div>
@@ -494,7 +494,7 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fenster & Türen Gießen</title>
+    <title>Zenit Bau</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -541,7 +541,7 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
         <div className="bg-slate-50 border-b p-5 text-xs text-slate-600 flex items-start space-x-3">
           <Cpu className="text-sky-500 mt-0.5 shrink-0" size={16} />
           <p className="leading-relaxed">
-            Als Web-Entwickler habe ich eine **vollständig optimierte und responsive Version** der gesamten Gießener Homepage als **Single-File-HTML** kompiliert. Alle Designs, responsive Grids, Hamburger Menüs, Live Postleitzahlen-Schnittstellen und Formspree-Schnittstellen sind vollständig implementiert. Kopieren Sie den Code einfach in Ihre `index.html` Datei und laden Sie diese direkt auf GitHub Pages hoch!
+            Als Web-Entwickler habe ich eine **vollständig optimierte und responsive Version** der gesamten Zenit Bau Homepage als **Single-File-HTML** kompiliert. Alle Designs, responsive Grids, Hamburger Menüs, Live Postleitzahlen-Schnittstellen und Formspree-Schnittstellen sind vollständig implementiert. Kopieren Sie den Code einfach in Ihre `index.html` Datei und laden Sie diese direkt auf GitHub Pages hoch!
           </p>
         </div>
 

@@ -51,7 +51,7 @@ export default function App() {
                 Häufig gestellte Fragen (FAQ)
               </h2>
               <p className="text-slate-550 text-sm sm:text-base leading-relaxed">
-                Hier finden Sie verlässliche Antworten rund um Beratung, Aufmaß, Wärmedämmung und Bestellung bei Fenster & Türen Gießen.
+                Hier finden Sie verlässliche Antworten rund um Beratung, Aufmaß, Wärmedämmung und Bestellung bei Zenit Bau.
               </p>
             </div>
 

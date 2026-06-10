@@ -239,7 +239,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                   {/* Real Formspree HTML form if selected, otherwise fallback React simulation form */}
                   <form
                     onSubmit={isFormspreeActive ? undefined : handleSubmit}
-                    action={isFormspreeActive ? `https://formspree.io/f/${formspreeId}` : undefined}
+                    action={isFormspreeActive ? `https://formspree.io/f/mpqelgod` : undefined}
                     method={isFormspreeActive ? 'POST' : undefined}
                     className="space-y-6"
                     id="giessen-anfrage-form"

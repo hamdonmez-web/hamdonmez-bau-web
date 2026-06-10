@@ -22,7 +22,7 @@ export default function Footer() {
                 </div>
               </div>
               <span className="font-sans font-extrabold text-white text-md tracking-wide">
-                FENSTER & TÜREN GIEẞEN
+                FENSTER & TÜREN ZENIT BAU
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
@@ -110,7 +110,7 @@ export default function Footer() {
 
         {/* Closing details bar */}
         <div className="border-t border-white/5 pt-8 mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-light gap-4">
-          <p>© 2026 Fenster & Türen Gießen. Alle Rechte vorbehalten.</p>
+          <p>© 2026 Zenit Bau. Alle Rechte vorbehalten.</p>
           <p className="flex items-center text-slate-500 shrink-0">
             <span>Konzipiert für Gießen und Umland</span>
           </p>
