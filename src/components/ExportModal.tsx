@@ -725,18 +725,77 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
                 </div>
               </div>
 
+              {/* IONOS DNS Kaydı Silme/Değiştirme Sorun Giderme */}
+              <div className="bg-amber-500/10 border border-amber-400/20 p-4 rounded-xl text-xs text-slate-350 space-y-2.5">
+                <h5 className="font-bold text-amber-400 flex items-center space-x-1.5 text-xs sm:text-sm">
+                  <span>💡 IONOS'ta A veya AAAA Kayıtlarını Değiştiremiyor veya Silemiyor musunuz?</span>
+                </h5>
+                <p className="leading-relaxed">
+                  IONOS paneli, bazı varsayılan servisler veya aktif olan bir yönlendirme sebebiyle bazı kayıtları değiştirmenize veya silmenize izin vermeyebilir. Bu durumlarda şu çözümleri uygulayabilirsiniz:
+                </p>
+                <ol className="list-decimal pl-4 space-y-2 text-slate-300">
+                  <li>
+                    <strong className="text-white">Silmek Yerine "Düzenle" (Edit) Yapın:</strong>
+                    <br />
+                    Kayıtları silmenize gerek yoktur. Kayıt listesindeki en sağdaki <strong className="text-amber-300">Kalem (Düzenle)</strong> simgesine tıklayarak mevcut IONOS IP adresini silip yerine GitHub Pages IP adreslerini (<code className="bg-slate-950 px-1 rounded text-white font-mono text-[10px]">185.199.108.153</code> vb.) yazarak kaydedebilirsiniz.
+                  </li>
+                  <li>
+                    <strong className="text-white">Gereksiz AAAA (IPv6) Kayıtlarını GitHub'a Yönlendirin:</strong>
+                    <br />
+                    IONOS'un varsayılan IPv6 (AAAA) adresini silemiyorsanız, yine düzenle butonuna basarak hedef kısmını aşağıdaki GitHub Pages IPv6 adresleriyle değiştirin:
+                    <div className="bg-slate-950 p-2 rounded border border-slate-800 font-mono text-[10px] mt-1 text-sky-300 select-all space-y-0.5">
+                      <div>2606:50c0:8000::153</div>
+                      <div>2606:50c0:8001::153</div>
+                      <div>2606:50c0:8002::153</div>
+                      <div>2606:50c0:8003::153</div>
+                    </div>
+                  </li>
+                  <li>
+                    <strong className="text-white">Yönlendirmeyi (HTTP-Weiterleitung) Silin (Kilitleri Açar):</strong>
+                    <br />
+                    Eğer düzenleme izinleriniz tamamen kapalıysa, web siteniz için IONOS üzerinden bir <em>"HTTP Weiterleitung" (HTTP-Yönlendirme)</em> kurulmuş demektir. <strong>Kullanım Türü (Verwendungsart)</strong> ayarlarına giderek veya yönlendirme ayarlarına girerek bu yönlendirmeyi <strong>İptal Edin / Silin</strong>. Böylece tüm DNS düzenleme/silme yetkileri açılacaktır.
+                  </li>
+                </ol>
+              </div>
+
               <div className="bg-blue-500/10 border border-blue-400/20 p-4 rounded-xl text-xs text-slate-300 flex items-start space-x-2.5">
-                <span className="text-sky-400 text-base leading-none">ℹ</span>
+                <span className="text-sky-450 text-base leading-none">ℹ</span>
                 <p className="leading-relaxed">
                   <strong>Kritik Bilgi (Adres Çubuğunun Değişmesini Engelleme):</strong>
                   <br />
                   Tarayıcınızda <code className="bg-black/40 px-1 rounded text-sky-300 font-mono">zenit-bau.de</code> yazınca adresin <code className="bg-slate-950 px-1 rounded text-red-300 font-mono">hamdonmez-web.github.io...</code> olarak <strong>gözükmesini / değişmesini engellemek</strong> ve web sitenizin tamamen kendi alan adınız üzerinden çalışmasını sağlamak için şu iki hususa dikkat etmelisiniz:
                   <ul className="list-disc pl-5 mt-2 space-y-1">
-                    <li><strong>IONOS Yönlendirmesini Devre Dışı Bırakın:</strong> IONOS panelinde bu alan adı için ayarlanmış bir <em>"HTTP-Weiterleitung" (Yönlendirme)</em> varsa bunu kesinlikle <strong>silin veya devre dışı bırakın</strong>. Alan adınız yalnızca yukarıda listenen DNS A ve CNAME kayıtlarını kullanmalıdır!</li>
-                    <li><strong>GitHub Pages Ayarlarında Custom Domain Etkinleştirin:</strong> GitHub'da projenizin deposuna gidin, <strong>Settings</strong> &gt; sol menüden <strong>Pages</strong> adımlarını takip edin. <strong>"Custom domain"</strong> kutusuna <code className="bg-black/40 px-1.5 py-0.5 rounded text-white font-mono">zenit-bau.de</code> yazıp <strong>Save</strong> butonuna basın. Ardından <strong>Enforce HTTPS</strong> kutusunu da işaretleyin.</li>
+                    <li><strong>IONOS Yönlendirmesini Devre Dışı Bırakın:</strong> IONOS panelinde bu alan adı için ayarlanmış bir <em>"HTTP-Weiterleitung" (Yönlendirme)</em> varsa bunu kesinlikle <strong>silin veya devre dışı bırakın</strong>. Alan adınız yalnızca yukarıda listelenen DNS A ve CNAME kayıtlarını kullanmalıdır!</li>
+                    <li><strong>GitHub Pages Ayarlarında Custom Domain Etkinleştirin:</strong> GitHub'da projenizin deposuna gidin, <strong>Settings</strong> &gt; sol menüden <strong>Pages</strong> adımlarını takip edin. <strong>"Custom domain"</strong> kutusuna <code className="bg-black/40 px-1.5 py-0.5 rounded text-white font-mono">zenit-bau.de</code> yazıp <strong>Save</strong> butonuna basın.</li>
                   </ul>
-                  <span className="block mt-2 font-semibold">Senkronizasyon Süresi:</span> Yapılan DNS değişikliklerinin tüm dünya genelinde etkinleşmesi ve internet sağlayıcıları tarafından tanınması IONOS sunucu yapısına göre <strong>5 dakika ile birkaç saat</strong> arasında sürebilir.
                 </p>
+              </div>
+
+              {/* GÜVENLİ DEĞİL (SSL/HTTPS) SORUN GİDERME KARTU */}
+              <div className="bg-rose-500/10 border border-rose-400/20 p-4 rounded-xl text-xs text-slate-300 space-y-2.5">
+                <h5 className="font-bold text-rose-400 flex items-center space-x-1.5 text-xs sm:text-sm">
+                  <span>🔒 "Güvenli Değil" (Not Secure) Uyarısı Nasıl Düzeltilir?</span>
+                </h5>
+                <p className="leading-relaxed text-slate-350">
+                  Sitenize <code className="bg-black/40 px-1 rounded text-sky-300 font-mono">zenit-bau.de</code> üzerinden girince tarayıcı adres barında "Güvenli Değil" yazması, siteniz için henüz bir <strong>SSL güvenlik sertifikasının (HTTPS)</strong> kurulmamış veya aktif edilmemiş olmasından kaynaklanır. Bunu düzeltmek için şu adımları takip edin:
+                </p>
+                <ol className="list-decimal pl-4 space-y-2 text-slate-300">
+                  <li>
+                    <strong className="text-white">GitHub "Enforce HTTPS" Ayarını Etkinleştirin:</strong>
+                    <br />
+                    GitHub projenizde <strong>Settings</strong> &gt; sol menüden <strong>Pages</strong> kısmına girin. "Custom domain" kutusunun altındaki <strong className="text-rose-300">"Enforce HTTPS"</strong> seçeneğini bulun ve yanındaki onay kutusunu işaretleyin.
+                  </li>
+                  <li>
+                    <strong className="text-white">"Enforce HTTPS" Seçeneği Gri Renkteyse (Seçilemiyorsa):</strong>
+                    <br />
+                    Eğer bu kutu tıklanamıyor veya gri ise, GitHub şu anda DNS kayıtlarınızın yönlendiğini doğrulamaya çalışıyor ve arka planda siteniz için ücretsiz bir Let's Encrypt SSL sertifikası tanımlıyor demektir. Bu doğrulama işlemi genellikle DNS yönlendirmenizden sonra <strong className="text-emerald-400">10 dakika ila 1 saat</strong> arasında tamamlanır. Arada sayfayı yenileyip kutucuğu işaretlemeyi tekrar deneyin.
+                  </li>
+                  <li>
+                    <strong className="text-white">Tarayıcı Geçmişini Temizleme (Önbellek):</strong>
+                    <br />
+                    HTTPS'i etkinleştirdikten sonra sitenizi yeni, gizli gizli sekmede (Incognito) veya tarayıcı önbelleğinizi temizleyerek açın. Güvenli kilit simgesinin (<code className="bg-slate-950 px-1 rounded text-emerald-300 font-mono">https://zenit-bau.de</code>) başarıyla geldiğini göreceksiniz.
+                  </li>
+                </ol>
               </div>
             </div>
           </div>

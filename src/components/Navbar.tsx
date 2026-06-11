@@ -3,7 +3,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Phone, ShieldCheck, MapPin } from 'lucide-react';
 import Logo from './Logo';
 
-export default function Navbar() {
+interface NavbarProps {
+  activeTab: 'startseite' | 'dienstleistungen' | 'angebote' | 'ueber-uns';
+  onChangeTab: (tab: 'startseite' | 'dienstleistungen' | 'angebote' | 'ueber-uns') => void;
+  onOpenInquiry: () => void;
+}
+
+export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -19,40 +25,37 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = [
-    { label: 'Startseite', href: '#home' },
-    { label: 'Fenster', href: '#fenster' },
-    { label: 'Türen', href: '#tueren' },
-    { label: 'Service & Montage', href: '#service' },
-    { label: 'Angebote', href: '#angebote' },
+  const menuItems: { label: string; id: 'startseite' | 'dienstleistungen' | 'angebote' | 'ueber-uns' }[] = [
+    { label: 'Startseite', id: 'startseite' },
+    { label: 'Dienstleistungen', id: 'dienstleistungen' },
+    { label: 'Angebote', id: 'angebote' },
+    { label: 'Über Uns', id: 'ueber-uns' },
   ];
 
-  const handleScrollTo = (href: string) => {
+  const handleTabClick = (id: 'startseite' | 'dienstleistungen' | 'angebote' | 'ueber-uns') => {
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    onChangeTab(id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
       {/* Top Utility Bar */}
-      <div className="bg-[#383e42] text-white/90 text-xs py-2 px-4 border-b border-white/5 relative z-55 hidden sm:block">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <span className="flex items-center text-slate-300">
-              <MapPin size={13} className="mr-1 text-blue-400" />
+      <div className="bg-slate-900 text-white/90 text-xs py-2 px-6 border-b border-white/5 relative z-55 hidden sm:block">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-6 text-[11px] font-sans tracking-wide">
+            <span className="flex items-center text-slate-350">
+              <MapPin size={12} className="mr-1.5" style={{ color: "#d97706" }} />
               Servicegebiet Gießen & Region Mittelhessen
             </span>
-            <span className="flex items-center text-slate-300">
-              <ShieldCheck size={13} className="mr-1 text-blue-400" />
-              Meisterbetrieb / RAL-zertifizierte Montage
+            <span className="flex items-center text-slate-350">
+              <ShieldCheck size={12} className="mr-1.5" style={{ color: "#d97706" }} />
+              Meisterbetrieb / TÜV- & Bau-zertifizierte Ausführung
             </span>
           </div>
-          <div className="flex items-center">
-            <a href="tel:+49641123456" className="flex items-center hover:text-blue-400 font-medium transition-colors text-slate-200">
-              <Phone size={13} className="mr-1 text-blue-400 animate-pulse" />
+          <div className="flex items-center text-[11px] font-medium tracking-wide">
+            <a href="tel:+49641123456" className="flex items-center hover:text-white transition-colors text-slate-200">
+              <Phone size={11} className="mr-1.5 animate-pulse" style={{ color: "#d97706" }} />
               0641 / 123 456
             </a>
           </div>
@@ -61,38 +64,43 @@ export default function Navbar() {
 
       {/* Main Navbar */}
       <header
-        id="navbar-header"
+         id="navbar-header"
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-gray-200'
-            : 'bg-white/90 backdrop-blur-sm border-b border-gray-150'
+            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-neutral-100'
+            : 'bg-white/90 backdrop-blur-sm border-b border-neutral-50'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
           
           {/* Logo Section */}
           <a
-            onClick={() => handleScrollTo('#home')}
+            onClick={() => handleTabClick('startseite')}
             className="flex items-center cursor-pointer group"
             id="nav-logo-link"
           >
-            <Logo size="sm" variant="light" />
+            <Logo size="md" variant="light" />
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 items-center" id="desktop-nav-menu">
             {menuItems.map((item) => (
               <a
-                key={item.href}
-                onClick={() => handleScrollTo(item.href)}
-                className="text-[#383e42] hover:text-blue-600 font-semibold text-sm transition-colors cursor-pointer relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-600 after:transition-all hover:after:w-full"
+                key={item.id}
+                onClick={() => handleTabClick(item.id)}
+                className={`font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer relative py-2 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[#d97706] after:transition-all ${
+                  activeTab === item.id 
+                    ? 'text-black after:w-full' 
+                    : 'text-[#475569] hover:text-black after:w-0 hover:after:w-full'
+                }`}
               >
                 {item.label}
               </a>
             ))}
             <button
-              onClick={() => handleScrollTo('#anfrage')}
-              className="bg-blue-600 text-white px-5 py-2 rounded shadow-sm hover:bg-[#1d4ed8] transition-all cursor-pointer font-semibold text-sm"
+              onClick={onOpenInquiry}
+              className="text-white px-6 py-3 shadow-sm hover:brightness-110 active:scale-95 transition-all cursor-pointer font-bold text-xs uppercase tracking-wider rounded-none"
+              style={{ backgroundColor: "#0f172a" }}
               id="desktop-cta-btn"
             >
               Angebot anfordern
@@ -103,11 +111,11 @@ export default function Navbar() {
           <div className="flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-[#383e42] hover:text-blue-600 p-2"
+              className="text-slate-600 hover:text-black p-2"
               aria-label="Menü öffnen"
               id="mobile-menu-toggle"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -120,31 +128,39 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden bg-white border-b border-gray-200"
+              className="md:hidden bg-white border-b border-gray-100"
               id="mobile-nav-panel"
             >
-              <div className="px-4 pt-2 pb-6 space-y-3">
+              <div className="px-6 pt-2 pb-6 space-y-3 font-sans">
                 {menuItems.map((item) => (
                   <a
-                    key={item.href}
-                    onClick={() => handleScrollTo(item.href)}
-                    className="block text-[#383e42] hover:text-blue-600 py-2 px-3 rounded hover:bg-gray-100 text-base font-medium cursor-pointer"
+                    key={item.id}
+                    onClick={() => handleTabClick(item.id)}
+                    className={`block py-2.5 px-3 rounded text-xs font-semibold uppercase tracking-wider cursor-pointer ${
+                      activeTab === item.id 
+                        ? 'text-amber-700 bg-amber-50' 
+                        : 'text-[#475569] hover:text-black hover:bg-slate-50'
+                    }`}
                   >
                     {item.label}
                   </a>
                 ))}
                 {/* Mobile call link */}
-                <div className="p-3 border-t border-gray-200 my-4 space-y-4">
+                <div className="p-3 border-t border-gray-100 my-4 space-y-4">
                   <a
                     href="tel:+49641123456"
-                    className="flex items-center text-[#383e42] hover:text-blue-600 text-sm font-semibold"
+                    className="flex items-center text-slate-700 hover:text-black text-xs font-semibold uppercase tracking-wider"
                   >
-                    <Phone className="mr-2 text-blue-600" size={16} />
-                    Mobil: 0641 / 123 456
+                    <Phone className="mr-2" size={14} style={{ color: "#d97706" }} />
+                    Telefon: 0641 / 123 456
                   </a>
                   <button
-                    onClick={() => handleScrollTo('#anfrage')}
-                    className="w-full bg-blue-600 text-white font-semibold text-center py-3 rounded block shadow-md cursor-pointer"
+                    onClick={() => {
+                      setIsOpen(false);
+                      onOpenInquiry();
+                    }}
+                    className="w-full text-white font-bold text-center py-3.5 text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all block cursor-pointer"
+                    style={{ backgroundColor: "#0f172a" }}
                   >
                     Angebot anfordern
                   </button>

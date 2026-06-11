@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SERVICES } from '../data';
-import { Check, ArrowRight, ShieldCheck, HelpCircle } from 'lucide-react';
+import { Check, ArrowRight, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
 import { ServiceItem } from '../types';
 
 interface ProductsProps {
-  onSelectService: (serviceType: 'Fenster' | 'Haustür' | 'Montage/Service' | 'Sonstiges') => void;
+  onSelectService: (serviceType: 'Hoch- & Tiefbau' | 'Sanierung & Umbau' | 'Außenanlagen' | 'Sonstiges') => void;
 }
 
 export default function Products({ onSelectService }: ProductsProps) {
-  const [activeDetailId, setActiveDetailId] = useState<string | null>('fenster');
+  const [activeDetailId, setActiveDetailId] = useState<string | null>('hoch-tiefbau');
 
-  const getFormCategoryMapping = (id: string): 'Fenster' | 'Haustür' | 'Montage/Service' | 'Sonstiges' => {
-    if (id === 'fenster') return 'Fenster';
-    if (id === 'tueren') return 'Haustür';
-    if (id === 'montage') return 'Montage/Service';
+  const getFormCategoryMapping = (id: string): 'Hoch- & Tiefbau' | 'Sanierung & Umbau' | 'Außenanlagen' | 'Sonstiges' => {
+    if (id === 'hoch-tiefbau') return 'Hoch- & Tiefbau';
+    if (id === 'sanierung') return 'Sanierung & Umbau';
+    if (id === 'aussenanlagen') return 'Außenanlagen';
     return 'Sonstiges';
   };
 
@@ -28,103 +28,128 @@ export default function Products({ onSelectService }: ProductsProps) {
   };
 
   return (
-    <section id="dienstleistungen" className="py-24 bg-slate-50 scroll-mt-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-          <span className="font-mono text-xs text-blue-600 tracking-wider font-extrabold uppercase bg-blue-50 px-3.5 py-1.5 rounded-full">
-            Unsere Leistungen & Expertise
+    <section id="produkte" className="scroll-mt-10 bg-[#f8fafc]/50">
+      
+      {/* 1. What We Offer Features Section - "Neler Sunuyoruz?" style */}
+      <div className="py-20 bg-white border-t border-b border-slate-100">
+        <div className="max-w-6xl mx-auto px-6">
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-center mb-4 block" style={{ color: "#475569" }}>
+            DIE ZENIT BAU-KOMPETENZen
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-sans">
-            Professionelle Fenster & Türen aus Meisterhand
+          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight text-center mb-12">
+            Was zeichnet uns aus?
           </h2>
-          <p className="text-lg text-slate-600 font-light leading-relaxed">
-            Wir betreuen Ihr Vorhaben im Raum Gießen vollumfänglich – von der ersten kompetenten Beratung vor Ort, über das millimetergenaue Aufmaß bis hin zur sauberen Fachmontage.
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Zap,
+                title: "Termintreue & Effizienz",
+                description: "Wir arbeiten pünktlich, effizient und mit optimierten Bauabläufen für absolute Planbarkeit im Raum Hessen."
+              },
+              {
+                icon: ShieldCheck,
+                title: "Premium Qualität",
+                description: "Hochwertige, zertifizierte Baumaterialien und meisterhafte, präzise Bauausführung sichern den langfristigen Wert Ihrer Immobilie."
+              },
+              {
+                icon: TrendingUp,
+                title: "Maximale Transparenz",
+                description: "Detaillierte Angebote ohne versteckte Kosten. Volle Budget- und Qualitätskontrolle bei jedem Bauabschnitt."
+              }
+            ].map((f, i) => {
+              const IconComp = f.icon;
+              return (
+                <div key={i} className="p-6 border border-slate-100 rounded-2xl hover:shadow-md transition bg-slate-50/30">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{ backgroundColor: "#d9770611", color: "#d97706" }}>
+                    <IconComp size={22} />
+                  </div>
+                  <h3 className="font-bold mb-2 text-slate-900 text-sm sm:text-base">{f.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed font-light">{f.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* 2. Products Showcase Section - "Esnek Paketlerimiz" style */}
+      <div className="py-24 max-w-6xl mx-auto px-6">
+        
+        <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
+          <span className="text-xs font-bold uppercase tracking-[0.25em]" style={{ color: "#475569" }}>
+            BODENSTÄNDIGES EXPERTENWERK
+          </span>
+          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight font-sans">
+            Dienstleistungen & Gewerke
+          </h2>
+          <p className="text-sm text-slate-500 font-light leading-relaxed">
+            Wir betreuen Ihr Neubau- oder Modernisierungsvorhaben im Raum Gießen schlüsselfertig aus einer Hand. Wählen Sie das passende Gewerk aus.
           </p>
         </div>
 
-        {/* 3-Column Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {SERVICES.map((service) => {
+        {/* 3-Column Products Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" id="products-cards-grid">
+          {SERVICES.map((service, idx) => {
             const isExpanded = activeDetailId === service.id;
-            // Left border accents from Professional Polish guidelines
-            const borderAccentClass = 
-              service.id === 'fenster' ? 'border-l-4 border-blue-600 pl-4' :
-              service.id === 'tueren' ? 'border-l-4 border-[#383e42] pl-4' :
-              'border-l-4 border-green-600 pl-4';
+            
+            const startingTags = [
+              { price: "Festpreis", label: "Hoch- & Tiefbau" },
+              { price: "Förderfähig", label: "Sanierung & Umbau" },
+              { price: "Individuell", label: "Außenanlagen" }
+            ];
 
             return (
-              <motion.div
+              <div 
                 key={service.id}
-                layoutId={`card-container-${service.id}`}
-                className={`bg-white rounded-2xl shadow-xl shadow-slate-100/50 border overflow-hidden flex flex-col transition-all h-full ${
-                  isExpanded ? 'border-blue-600 ring-2 ring-blue-600/10' : 'border-slate-200 hover:border-slate-350'
+                className={`bg-white p-8 border rounded-2xl flex flex-col justify-between hover:shadow-lg transition-all ${
+                  isExpanded ? 'border-amber-600 ring-2 ring-amber-600/10' : 'border-slate-150'
                 }`}
               >
-                {/* Product Image section with styled badge */}
-                <div className="relative h-60 overflow-hidden shrink-0 group">
-                  <img
-                    src={service.imageUrl}
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
-                  />
-                  {service.badge && (
-                    <span className="absolute top-4 left-4 bg-[#383e42] text-xs text-blue-400 font-mono tracking-wider font-extrabold uppercase px-3 py-1.5 rounded-md shadow-md animate-pulse">
-                      {service.badge}
+                <div>
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="font-bold text-slate-900 text-base sm:text-lg leading-snug">{service.title}</h3>
+                    <span className="px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider" style={{ backgroundColor: "#d9770615", color: "#d97706" }}>
+                      {startingTags[idx].price}
                     </span>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
-                </div>
-
-                {/* Card Body */}
-                <div className="p-8 flex flex-col justify-between flex-grow space-y-6">
-                  <div className={`space-y-3 ${borderAccentClass}`}>
-                    <h3 className="text-xl font-bold text-slate-900 font-sans tracking-tight">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed font-light">
-                      {service.description}
-                    </p>
+                  </div>
+                  
+                  {/* Subtle Image presentation inside card */}
+                  <div className="h-32 w-full bg-slate-100 mb-4 overflow-hidden">
+                    <img 
+                      src={service.imageUrl} 
+                      alt={service.title} 
+                      className="w-full h-full object-cover grayscale opacity-85 hover:grayscale-0 hover:opacity-100 transition duration-300"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
 
-                  {/* Highlights Bullet list */}
-                  <ul className="space-y-2.5 text-slate-700 text-sm border-t border-slate-100 pt-5">
-                    {service.features.slice(0, 3).map((feat, i) => (
-                      <li key={i} className="flex items-start">
-                        <Check size={16} className="text-blue-600 mr-2.5 shrink-0 mt-0.5" />
-                        <span className="font-medium">{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Interactive Button row */}
-                  <div className="flex items-center space-x-3 pt-4 border-t border-slate-100">
-                    <button
-                      onClick={() => setActiveDetailId(activeDetailId === service.id ? null : service.id)}
-                      className={`text-slate-600 hover:text-slate-900 border text-xs font-semibold py-2 px-3.5 rounded-lg flex items-center shadow-sm cursor-pointer transition-all ${
-                        isExpanded ? 'bg-slate-100 border-slate-300' : 'bg-white border-slate-200'
-                      }`}
-                    >
-                      {isExpanded ? 'Details verbergen' : 'Details einblenden'}
-                    </button>
-                    
-                    <button
-                      onClick={() => handleCtaClick(service.id)}
-                      className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 px-4 rounded-lg flex items-center space-x-1 ml-auto shadow-md shadow-blue-500/10 cursor-pointer transition-colors"
-                    >
-                      <span>Anfragen</span>
-                      <ArrowRight size={14} />
-                    </button>
-                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed mb-6">{service.description}</p>
                 </div>
-              </motion.div>
+
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <button
+                    onClick={() => setActiveDetailId(activeDetailId === service.id ? null : service.id)}
+                    className="text-slate-500 hover:text-[#d97706] text-[11px] font-semibold uppercase tracking-wider cursor-pointer"
+                  >
+                    {isExpanded ? 'Details verbergen' : 'Details einblenden'}
+                  </button>
+                  
+                  <button
+                    onClick={() => handleCtaClick(service.id)}
+                    className="text-white hover:brightness-110 px-4 py-2 font-bold text-[10px] uppercase tracking-wider transition hover:shadow-md flex items-center gap-1 shrink-0 cursor-pointer"
+                    style={{ backgroundColor: "#0f172a" }}
+                  >
+                    <span>Anfragen</span>
+                    <ArrowRight size={10} style={{ color: "#d97706" }} />
+                  </button>
+                </div>
+              </div>
             );
           })}
         </div>
 
-        {/* Detailed Expanded Info Area (AnimatePresence) */}
+        {/* Selected Product Detail Area */}
         <AnimatePresence mode="wait">
           {activeDetailId && (
             <motion.div
@@ -132,80 +157,72 @@ export default function Products({ onSelectService }: ProductsProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.25 }}
-              className="bg-[#383e42] rounded-2xl p-8 sm:p-10 text-white shadow-xl shadow-slate-900/10 relative overflow-hidden"
-              id="service-detail-tabs"
+              transition={{ duration: 0.2 }}
+              className="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden"
+              id="active-service-detail-panels"
             >
-              {/* Decorative accent graphic */}
-              <div className="absolute right-0 top-0 w-80 h-85 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
-
-              {/* Service details representation */}
               {(() => {
                 const service = SERVICES.find(s => s.id === activeDetailId) as ServiceItem;
                 return (
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" id={`service-expanded-panel-${service.id}`}>
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div className="lg:col-span-7 space-y-6">
-                      <div className="flex items-center space-x-3">
-                        <span className="font-mono text-xs bg-blue-600/20 border border-blue-500/35 px-3 py-1 rounded text-blue-300 uppercase font-semibold">
-                          Vertiefte Informationen
+                      <div className="flex items-center space-x-3 text-[11px] uppercase tracking-widest font-mono">
+                        <span className="bg-amber-600/20 border border-amber-500/30 px-3 py-1 rounded text-amber-300 font-bold">
+                          DETAILED INFO
                         </span>
-                        <span className="text-slate-300 text-xs flex items-center">
-                          <ShieldCheck size={14} className="mr-1 text-blue-400" />
+                        <span className="text-slate-400 flex items-center">
+                          <Check size={12} className="mr-1 text-amber-500" />
                           Garantierte Premium-Qualität
                         </span>
                       </div>
                       
-                      <h3 className="text-3xl font-extrabold text-white tracking-tight leading-none font-sans">
+                      <h3 className="text-2xl sm:text-3xl font-light text-white tracking-tight leading-none font-sans">
                         {service.title} im Detail
                       </h3>
                       
-                      <p className="text-slate-300 text-base leading-relaxed font-light">
+                      <p className="text-slate-400 text-xs sm:text-sm leading-relaxed font-light">
                         {service.longDescription}
                       </p>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                         {service.features.map((feat, i) => (
-                          <div key={i} className="flex items-start space-x-2.5">
-                            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-blue-600/20 text-blue-300 text-xs shrink-0 mt-0.5">
+                          <div key={i} className="flex items-start space-x-2">
+                            <span className="flex items-center justify-center w-4.5 h-4.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] shrink-0 mt-0.5 font-bold">
                               ✓
                             </span>
-                            <span className="text-slate-200 text-xs sm:text-sm font-medium leading-normal">{feat}</span>
+                            <span className="text-slate-300 text-xs font-medium leading-normal">{feat}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="lg:col-span-5 flex flex-col space-y-6 bg-black/25 p-6 sm:p-8 rounded-xl border border-white/10 backdrop-blur-sm self-stretch justify-center">
-                      <h4 className="text-lg font-bold text-white flex items-center space-x-2">
-                        <ShieldCheck size={20} className="text-blue-400" />
-                        <span>Vorteile unseres Fachbetriebs:</span>
+                    <div className="lg:col-span-5 flex flex-col space-y-6 bg-slate-950 p-6 sm:p-8 rounded-2xl border border-white/5 justify-center self-stretch">
+                      <h4 className="text-sm font-bold uppercase tracking-wider text-white">
+                        Vorteile unseres Fachbetriebs:
                       </h4>
                       
                       <div className="space-y-4">
-                        <div className="flex items-start space-x-3">
-                          <div className="bg-blue-600/20 border border-blue-500/20 p-1 rounded mt-0.5 text-blue-300">
-                            ✓
-                          </div>
+                        <div className="flex items-start space-x-3 text-xs">
+                          <div className="text-amber-500 font-bold mt-0.5">✓</div>
                           <div>
-                            <p className="text-xs font-bold text-slate-100 uppercase font-sans tracking-wide">Regionale Ansprechpartner</p>
-                            <p className="text-xs text-slate-300 mt-1">Wir betreuen Sie vor Ort und sind auch bei zukünftigen Servicearbeiten schnell erreichbar.</p>
+                            <p className="font-bold text-slate-100 uppercase tracking-wider">Regionale Meisterbetreuung</p>
+                            <p className="text-slate-400 mt-1">Wir betreuen Sie permanent vor Ort im Raum Mittelhessen.</p>
                           </div>
                         </div>
 
-                        <div className="flex items-start space-x-3">
-                          <div className="bg-blue-600/20 border border-blue-500/20 p-1 rounded mt-0.5 text-blue-300">
-                            ✓
-                          </div>
+                        <div className="flex items-start space-x-3 text-xs">
+                          <div className="text-amber-500 font-bold mt-0.5">✓</div>
                           <div>
-                            <p className="text-xs font-bold text-slate-100 uppercase font-sans tracking-wide">Planungssicherheit</p>
-                            <p className="text-xs text-slate-300 mt-1">Zuverlässiges Aufmaß und verbindliche Festpreise ohne versteckte Nachtragskosten.</p>
+                            <p className="font-bold text-slate-100 uppercase tracking-wider">Verbindlicher Festpreis</p>
+                            <p className="text-slate-400 mt-1">Zuverlässiges Angebot ohne versteckte Bearbeitungsgebühren.</p>
                           </div>
                         </div>
                       </div>
 
                       <button
                         onClick={() => handleCtaClick(service.id)}
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-lg shadow-lg hover:shadow-blue-600/15 cursor-pointer text-center text-sm tracking-wide transition-all"
+                        className="w-full text-white font-bold py-3.5 tracking-wider text-xs uppercase hover:brightness-110 active:scale-95 transition-all text-center rounded-none cursor-pointer text-slate-100"
+                        style={{ backgroundColor: "#0f172a" }}
                       >
                         Projekt {service.title} anfragen
                       </button>
@@ -216,7 +233,9 @@ export default function Products({ onSelectService }: ProductsProps) {
             </motion.div>
           )}
         </AnimatePresence>
+
       </div>
+
     </section>
   );
 }

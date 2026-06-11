@@ -14,7 +14,7 @@ export interface InquiryFormData {
   phone: string;
   zipCode: string;
   city: string;
-  serviceType: 'Fenster' | 'Haustür' | 'Montage/Service' | 'Sonstiges';
+  serviceType: 'Hoch- & Tiefbau' | 'Sanierung & Umbau' | 'Außenanlagen' | 'Sonstiges';
   details: string;
   gdprConsent: boolean;
 }

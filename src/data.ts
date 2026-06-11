@@ -28,78 +28,78 @@ export const REGIONAL_PARTNERS = [
 
 export const SERVICES: ServiceItem[] = [
   {
-    id: 'fenster',
-    title: 'Hocheffiziente Fenster',
-    description: 'Moderne Kunststoff- und Aluminium-Fenster mit Dreifachverglasung für maximale Energieeffizienz und erstklassigen Schallschutz.',
-    longDescription: 'Unsere Fenster vereinen fortschrittlichste Profiltechnologie mit stilvollem Design. Sie schützen Ihr Zuhause vor Wärmeverlust im Winter, übermäßiger Hitze im Sommer und unerwünschtem Lärm. Gefertigt nach strengen deutschen Qualitätsmaßstäben, bieten sie Einbruchschutz bis zur Widerstandsklasse RC2/RC3.',
+    id: 'hoch-tiefbau',
+    title: 'Hoch- & Tiefbau',
+    description: 'Professioneller Rohbau, Fundamente, Erdarbeiten und schlüsselfertiger Wohnungsbau nach höchsten Maßstäben.',
+    longDescription: 'Als starker Partner für Hoch- und Tiefbau realisieren wir schlüsselfertige Wohn- und Gewerbeprojekte in Gießen. Von der Erdsondierung und dem Fundamentbau über präzises Mauerwerk bis hin zum kompletten Rohbau – wir setzen auf moderne Baugeräte, statische Meisterleistung und langlebige Materialien.',
     features: [
-      'U-Wert bis zu 0,73 W/(m²K) (Passivhaus-Standard)',
-      'Hochwertige Mehrkammer-Konstruktion',
-      'Innovative Dreifachverglasung mit warmer Kante',
-      'Verdeckt liegende Sicherheitsbeschläge',
-      'Erhältlich in RAL 7016 Anthrazit und über 50 Farbfolien'
+      'Eigener, hochmoderner Maschinenpark für Erdarbeiten',
+      'Ingenieurgeführte statische Berechnungen & Tragwerksplanung',
+      'Schlüsselfertiger Bau von Einfamilienhäusern & Gewerbeflächen',
+      'Präzises Vermessungsfeinaufmaß vor jedem Baustart',
+      'Festpreis- und Fertigstellungsgarantie'
+    ],
+    imageUrl: IMAGE_ASSETS.hero,
+    badge: 'Festpreis'
+  },
+  {
+    id: 'sanierung',
+    title: 'Sanierung & Umbau',
+    description: 'Komplette energetische Sanierung, Denkmalschutz, Schadstoffsanierung und Modernisierung bestehender Gebäude.',
+    longDescription: 'Erhalten Sie den Wert historischer Bausubstanz oder machen Sie Ihren Altbau fit für die Zukunft. Unser Team ist spezialisiert auf hocheffiziente energetische Fassadendämmungen, statische Umbauten, Denkmalschutzauflagen sowie professionellen Innenausbau. Wir koordinieren alle Gewerke schlüsselfertig.',
+    features: [
+      'Energetische Gebäudesanierung nach KfW-Effizienzhaus-Standards',
+      'Umbauten, Wanddurchbrüche mit Stahlträger-Einzug',
+      'Schimmelsanierung, Schadstoffprüfung & Entkernung',
+      'Denkmalschutzgerechte Modernisierung mit feinsten Materialien',
+      'Professionelle Beratung bei KfW-Zuschüssen (bis zu 20% Förderung)'
     ],
     imageUrl: IMAGE_ASSETS.window,
-    badge: 'Bestseller'
+    badge: 'Nach Aufwand'
   },
   {
-    id: 'tueren',
-    title: 'Sichere & Elegante Haustüren',
-    description: 'Premium-Aluminium- & Holz-Haustüren, die Ästhetik, Spitzen-Wärmedämmung und modernste Sicherheitstechnik (RC3) vereinen.',
-    longDescription: 'Ihre Haustür ist die Visitenkarte Ihres Hauses. Deshalb bieten wir Haustüren, die höchste Designansprüche mit extremer Langlebigkeit kombinieren. Ausgestattet mit automatischer Mehrfachverriegelung, massiven Bändern und optionalem Fingerprint- oder Smart-Home-Zugang, bieten wir kompromisslose Sicherheit.',
+    id: 'aussenanlagen',
+    title: 'Außenanlagen',
+    description: 'Pflasterarbeiten, repräsentative Einfahrten, Mauerbau und moderner Landschaftsbau für Ihr Grundstück.',
+    longDescription: 'Wir gestalten den Außenbereich Ihrer Immobilie repräsentativ und funktional. Ob anspruchsvolle Naturstein-Pflasterungen für Hofeinfahrten, Hangflor-Abstützungen, Zaunbau, Fundamente für Garagen oder der komplette landschaftsarchitektonische Gartenbau – wir schaffen harmonische Übergänge.',
     features: [
-      'Aluminium mit thermischer Trennung für exzellente Dämmung',
-      'Sicherheitsverriegelung mit 5-fach Schwenkriegeln',
-      'Sicherheitsklasse RC2 oder RC3 serienmäßig konfigurierbar',
-      'Exzellente Schalldämmwerte bis zu 43 dB',
-      'Individuelle Seitenteile und Oberlichter aus Sicherheitsglas'
-    ],
-    imageUrl: IMAGE_ASSETS.door,
-    badge: 'Premium'
-  },
-  {
-    id: 'montage',
-    title: 'Zertifizierte Montage & Service',
-    description: 'Komplettservice aus einer Hand: präzises Aufmaß vor Ort, sorgfältiger Ausbau alter Elemente, saubere RAL-Montage und verlässlicher Service.',
-    longDescription: 'Selbst das beste Fenster nützt nur, wenn es fachgerecht eingebaut wird. Unsere geschulten Montageteams garantieren den Einbau streng nach RAL-Montagerichtlinien. Wir hinterlassen Ihr Zuhause absolut sauber, kümmern uns um die umweltgerechte Entsorgung der Altteile und stehen Ihnen auch nach dem Einbau für Wartungen zur Seite.',
-    features: [
-      'Professionelles Aufmaß direkt bei Ihnen in Gießen & Umgebung',
-      'Demontage und umweltgerechte Entsorgung Ihrer Altfenster',
-      'Montage nach strengen RAL-Richtlinien für lückenlose Abdichtung',
-      'Eigene, langjährig erfahrene Montageteams (keine Subunternehmer-Ketten)',
-      'Verlässliche Wartung, Einstellarbeiten und schneller Reparaturservice'
+      'Hochwertige Pflasterungen für Zufahrten, Terrassen und Parkflächen',
+      'Stützmauern, Fundamentplatten & Sichtschutzsysteme',
+      'Professionelle Entwässerungs- & Rigolensysteme',
+      'Individuelle Gartengestaltung und Geländemodellierung',
+      'Einsatz von langlebigen Natur- & Betonsteinen aus Hessen'
     ],
     imageUrl: IMAGE_ASSETS.installation,
-    badge: 'Meisterbetrieb'
+    badge: 'Individuell'
   }
 ];
 
 export const SUMMER_PROMO: PromoCampaign = {
-  id: 'summer_2026',
-  title: 'Sommer-Aktion 2026',
-  subtitle: 'Upgrade auf exzellenten Wärmeschutz',
+  id: 'bau_2026',
+  title: 'Bau- & Sanierungs-Vorteil 2026',
+  subtitle: 'Effizienz- & Zukunfts-Upgrade',
   badge: 'Sonderaktion',
-  description: 'Halten Sie die Sommerhitze draußen und sparen Sie Heizkosten im Winter! Bei einer Bestellung im Aktionszeitraum erhalten Sie ein kostenloses Upgrade auf unsere hocheffiziente Dreifachverglasung (Ug = 0.5 W/m²K) im Wert von 10% Rabatt auf das Gesamtpaket.',
+  description: 'Sparen Sie bares Geld bei Ihrer anstehenden Modernisierung! Bei Beauftragung eines Sanierungs- oder Außenanlagenprojekts im Aktionszeitraum erhalten Sie die vollständige statische Vorplanung sowie ein professionelles 3D-Baugutachten im Wert von bis zu 1.500 € komplett gratis dazu.',
   validUntil: '31. August 2026',
-  discount: '10% RABATT'
+  discount: 'GRATIS EFFIZIENZ-CHECK'
 };
 
 export const FAQ = [
   {
-    question: 'Bieten Sie Beratung und Aufmaß vor Ort kostenlos an?',
-    answer: 'Ja, unser Aufmaß- und Beratungsservice in Gießen, Wetzlar, Marburg und der gesamten Region Wetteraukreis/Lahn-Dill-Kreis ist für Sie absolut unverbindlich und kostenfrei.'
+    question: 'Bieten Sie Beratung und Vor-Ort-Besichtigungen kostenlos an?',
+    answer: 'Ja, unsere erste Vor-Ort-Besichtigung, die technische Beratung sowie das detaillierte Festpreisangebot in Gießen, Wetzlar, Marburg und der gesamten Region Mittelhessen sind für Sie absolut unverbindlich und kostenfrei.'
   },
   {
-    question: 'Welche Sicherheitsklassen bieten Ihre Fenster und Türen?',
-    answer: 'Unsere Standardprodukte verfügen bereits über erhöhten Einbruchschutz. Auf Wunsch statten wir Fenster und Haustüren umfassend nach den Richtlinien der Kriminalpolizei bis hin zu zertifizierten RC2- oder RC3-Sicherheitsstufen aus.'
+    question: 'Führen Sie alle Bauleistungen mit eigenem Personal aus?',
+    answer: 'Ja, Zenit Bau arbeitet ausschließlich mit festangestellten deutschen Ingenieuren, Maurermeistern und Facharbeitern. Für spezialisierte Spezialgewerke (z.B. Elektrik) koordinieren wir langjährige, zertifizierte Partnerbetriebe aus der Region Gießen, sodass Sie stets nur einen verantwortlichen Ansprechpartner haben.'
   },
   {
-    question: 'Wie lange dauert die Lieferung und Montage in der Regel?',
-    answer: 'Nach präzisem Feinaufmaß und Freigabe beträgt die Lieferzeit je nach Material (Kunststoff ca. 4–6 Wochen, Aluminium ca. 6–8 Wochen). Die anschließende Montage erfolgt termintreu und dauert für ein durchschnittliches Einfamilienhaus meist nur 1 bis 2 Werktage.'
+    question: 'Wie sichern Sie die vereinbarten Baukosten und Fristen ab?',
+    answer: 'Transparenz ist unsere Philosophie. Wir vereinbaren vertraglich eine Festpreisgarantie und eine minutengenaue Terminschiene für jeden Meilenstein Ihres Bau- oder Sanierungsvorhabens. Unvorhergesehene Kostenrisiken tragen wir im Rahmen unseres schlüsselfertigen Angebots selbst.'
   },
   {
-    question: 'Wer entsorgt meine alten Fenster und Türen?',
-    answer: 'Das übernehmen wir komplett für Sie. Unser Team baut die alten Elemente vorsichtig aus und transportiert sie direkt zu einem zertifizierten Recycling-Fachbetrieb. Dieser Service ist in unserem Montage-Vollservice enthalten.'
+    question: 'Unterstützen Sie uns bei Bauanträgen und KfW-Förderungen?',
+    answer: 'Absolut. Unser Team verfügt über vorlageberechtigte Ingenieure bzgl. Bauanträgen bei den hessischen Baubehörden. Zudem analysiert unser zertifizierter Energieberater alle Sanierungsmaßnahmen und bereitet die Förderanträge für die KfW oder das BAFA für Sie unterschriftsreif vor.'
   }
 ];
 

@@ -1,12 +1,12 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { checkZipCoverage } from '../data';
-import { Check, Mail, Phone, MapPin, ClipboardList, AlertCircle, Sparkles, Send, ArrowRight } from 'lucide-react';
+import { Check, Mail, Phone, MapPin, ClipboardList, AlertCircle, Sparkles, Send } from 'lucide-react';
 import { InquiryFormData } from '../types';
 
 interface AnfrageFormProps {
-  selectedService: 'Fenster' | 'Haustür' | 'Montage/Service' | 'Sonstiges';
-  setSelectedService: (service: 'Fenster' | 'Haustür' | 'Montage/Service' | 'Sonstiges') => void;
+  selectedService: 'Hoch- & Tiefbau' | 'Sanierung & Umbau' | 'Außenanlagen' | 'Sonstiges';
+  setSelectedService: (service: 'Hoch- & Tiefbau' | 'Sanierung & Umbau' | 'Außenanlagen' | 'Sonstiges') => void;
 }
 
 export default function AnfrageForm({ selectedService, setSelectedService }: AnfrageFormProps) {
@@ -21,7 +21,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
     gdprConsent: false,
   });
 
-  // Keep state synchronized with parents chosen service type
+  // Keep state synchronized with parent's chosen service type
   useEffect(() => {
     setFormData((prev) => ({ ...prev, serviceType: selectedService }));
   }, [selectedService]);
@@ -35,7 +35,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
 
   // Load existing test submissions from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('giessen_fenster_inquiries');
+    const saved = localStorage.getItem('giessen_zenit_bau_inquiries');
     if (saved) {
       try {
         setSubmittedInquiries(JSON.parse(saved));
@@ -92,7 +92,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
     }
 
     if (!formData.phone.trim() || formData.phone.trim().replace(/\D/g, '').length < 6) {
-      newErrors.phone = 'Bitte geben Sie eine gültige Telefonnummer an (z.B. für Rückfragen zum Aufmaß).';
+      newErrors.phone = 'Bitte geben Sie eine gültige Telefonnummer an (z.B. für Rückfragen zur Planung/Statik).';
     }
 
     if (!formData.zipCode.trim() || formData.zipCode.length !== 5) {
@@ -135,7 +135,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
       if (response.ok) {
         const updatedInquiries = [formData, ...submittedInquiries];
         setSubmittedInquiries(updatedInquiries);
-        localStorage.setItem('giessen_fenster_inquiries', JSON.stringify(updatedInquiries));
+        localStorage.setItem('giessen_zenit_bau_inquiries', JSON.stringify(updatedInquiries));
         setIsSuccess(true);
       } else {
         const data = await response.json().catch(() => ({}));
@@ -155,7 +155,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
       phone: '',
       zipCode: '',
       city: '',
-      serviceType: 'Fenster',
+      serviceType: 'Hoch- & Tiefbau',
       details: '',
       gdprConsent: false,
     });
@@ -165,79 +165,79 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
   };
 
   return (
-    <section id="anfrage" className="py-24 bg-slate-905 text-white scroll-mt-20" style={{ backgroundColor: '#383e42' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="anfrage" className="py-24 text-white scroll-mt-20 font-sans" style={{ backgroundColor: '#0f172a' }}>
+      <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Form Left Pillar: Interactive context */}
+          {/* Form Left Pillar */}
           <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-28">
             <div className="space-y-4">
-              <span className="font-mono text-xs text-blue-400 tracking-wider font-extrabold uppercase bg-blue-900/20 border border-blue-500/25 px-3 py-1 rounded-full inline-block">
+              <span className="font-mono text-xs tracking-[0.2em] font-extrabold uppercase bg-amber-500/10 border border-amber-500/20 px-4 py-1.5 rounded-none inline-block text-amber-500">
                 Kostenlose Anfrage
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">
+              <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight">
                 Lassen Sie sich unverbindlich beraten
               </h2>
-              <p className="text-slate-350 font-light leading-relaxed text-sm sm:text-base">
+              <p className="text-slate-300 font-light leading-relaxed text-xs sm:text-sm">
                 Füllen Sie einfach unser Online-Formular aus. Unser Gießener Experte prüft Ihre Angaben sofort, setzt sich zwecks Beratung mit Ihnen in Verbindung und erstellt ein präzises, transparentes Festpreis-Angebot für Sie.
               </p>
             </div>
 
             {/* Quality Check List */}
-            <div className="space-y-4 pt-4 border-t border-white/10">
-              <h4 className="text-white font-bold text-base flex items-center">
-                <Sparkles size={18} className="text-blue-400 mr-2 shrink-0" />
+            <div className="space-y-4 pt-4 border-t border-white/5">
+              <h4 className="text-white font-bold text-xs uppercase tracking-wider flex items-center">
+                <Sparkles size={14} className="text-amber-500 mr-2 shrink-0 animate-pulse" />
                 <span>Ihr Ablauf bei uns:</span>
               </h4>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-[#121618] text-blue-400 text-xs font-bold mr-3 mt-0.5 shrink-0 border border-white/5">1</div>
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-slate-950 text-amber-550 text-amber-500 text-xs font-bold mr-3 mt-0.5 shrink-0 border border-white/5">1</div>
                   <div>
-                    <strong className="text-sm text-slate-100 block">Formular ausfüllen</strong>
-                    <span className="text-xs text-slate-400">Teilen Sie uns Ihre Wünsche mit (Dauer weniger als 2 Min.).</span>
+                    <strong className="text-[11px] uppercase tracking-wider text-slate-100 block">Formular ausfüllen</strong>
+                    <span className="text-xs text-slate-400 font-light">Teilen Sie uns Ihre Wünsche mit (Dauer weniger als 2 Min.).</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-[#121618] text-blue-400 text-xs font-bold mr-3 mt-0.5 shrink-0 border border-white/5">2</div>
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-slate-950 text-amber-550 text-amber-500 text-xs font-bold mr-3 mt-0.5 shrink-0 border border-white/5">2</div>
                   <div>
-                    <strong className="text-sm text-slate-100 block">Kostenloses Telefonat</strong>
-                    <span className="text-xs text-slate-400">Wir klären alle technischen Fragen und stimmen einen Aufmaßtermin ab.</span>
+                    <strong className="text-[11px] uppercase tracking-wider text-slate-100 block">Kostenloses Telefonat</strong>
+                    <span className="text-xs text-slate-400 font-light">Wir klären alle technischen Fragen und stimmen einen Vororttermin ab.</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-[#121618] text-blue-400 text-xs font-bold mr-3 mt-0.5 shrink-0 border border-white/5">3</div>
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-slate-950 text-amber-550 text-amber-500 text-xs font-bold mr-3 mt-0.5 shrink-0 border border-white/5">3</div>
                   <div>
-                    <strong className="text-sm text-slate-100 block">Unverbindliches Festpreisangebot</strong>
-                    <span className="text-xs text-slate-400">Sie erhalten ein verbindliches schriftliches Angebot ohne versteckte Kosten.</span>
+                    <strong className="text-[11px] uppercase tracking-wider text-slate-100 block">Unverbindliches Festpreisangebot</strong>
+                    <span className="text-xs text-slate-400 font-light">Sie erhalten ein verbindliches schriftliches Angebot ohne versteckte Kosten.</span>
                   </div>
                 </li>
               </ul>
             </div>
 
             {/* Direct Contact Banner */}
-            <div className="bg-[#242A2E] border border-white/10 rounded-2xl p-6 space-y-4">
-              <p className="text-xs text-slate-400 uppercase font-mono tracking-wider font-bold">Direkte Hotline für Schnellentschlossene:</p>
+            <div className="bg-slate-900/60 border border-white/5 rounded-none p-6 space-y-4">
+              <p className="text-[10px] text-zinc-400 uppercase font-mono tracking-widest font-bold">Direkte Hotline für Schnellentschlossene:</p>
               <div className="flex items-center space-x-3.5">
-                <div className="w-11 h-11 rounded-full bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-                  <Phone size={20} className="animate-pulse" />
+                <div className="w-11 h-11 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500">
+                  <Phone size={18} className="animate-pulse" />
                 </div>
                 <div>
-                  <a href="tel:+49641123456" className="text-xl font-bold text-white block hover:text-blue-400 transition-colors">
+                  <a href="tel:+49641123456" className="text-base sm:text-lg font-light text-white block hover:text-amber-500 transition-colors">
                     0641 / 123 456
                   </a>
-                  <span className="text-xs text-slate-400 block">Montag - Samstag: 08:00 - 18:00 Uhr</span>
+                  <span className="text-[11px] text-[#94a3b8] block font-light">Montag - Samstag: 08:00 - 18:00 Uhr</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Form Right Pillar: Actual interactive inquiry submission form */}
-          <div className="lg:col-span-7 bg-[#242A2E] p-6 sm:p-10 rounded-3xl border border-white/10 relative shadow-2xl" id="interactive-inquiry-box">
+          {/* Form Right Pillar */}
+          <div className="lg:col-span-7 bg-slate-950 p-6 sm:p-10 rounded-none border border-white/5 relative shadow-2xl" id="interactive-inquiry-box">
             
-            <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-8 text-xs">
-              <div className="flex items-center space-x-2 text-slate-300">
-                <ClipboardList size={14} className="text-blue-400" />
-                <span>Anfrage-Formular (Echtzeit-Übermittlung aktiv)</span>
+            <div className="flex items-center justify-between border-b border-zinc-800 pb-6 mb-8 text-xs">
+              <div className="flex items-center space-x-2 text-zinc-300">
+                <ClipboardList size={14} className="text-amber-500" />
+                <span>Gewerbliche und private Vorhaben (Echtzeit-Übermittlung)</span>
               </div>
             </div>
 
@@ -261,13 +261,12 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                       </div>
                     )}
 
-                    {/* Multi-row layout for Name & Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       
                       {/* Name field */}
                       <div className="space-y-2">
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
-                          Name, Vorname <span className="text-sky-400">*</span>
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-300">
+                          Name, Vorname <span className="text-amber-500">*</span>
                         </label>
                         <input
                           type="text"
@@ -275,13 +274,13 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                           required
                           value={formData.fullName}
                           onChange={handleInputChange}
-                          className={`w-full bg-slate-950 border text-sm rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 ${
-                            errors.fullName ? 'border-red-500' : 'border-slate-800 focus:border-sky-500'
+                          className={`w-full bg-slate-950 border text-xs sm:text-sm rounded-none px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-amber-500 ${
+                            errors.fullName ? 'border-red-550 border-red-500' : 'border-slate-800 focus:border-amber-500'
                           }`}
-                          placeholder="z. B. Dr. Sabine Müller"
+                          placeholder="z. B. Sabine Müller"
                         />
                         {errors.fullName && (
-                          <p className="text-xs text-red-400 flex items-center mt-1">
+                          <p className="text-[11px] text-red-500 flex items-center mt-1">
                             <AlertCircle size={12} className="mr-1" />
                             {errors.fullName}
                           </p>
@@ -290,8 +289,8 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
 
                       {/* Email field */}
                       <div className="space-y-2">
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
-                          E-Mail-Adresse <span className="text-sky-400">*</span>
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-300">
+                          E-Mail-Adresse <span className="text-amber-500">*</span>
                         </label>
                         <input
                           type="email"
@@ -299,13 +298,13 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                           required
                           value={formData.email}
                           onChange={handleInputChange}
-                          className={`w-full bg-slate-950 border text-sm rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 ${
-                            errors.email ? 'border-red-500' : 'border-slate-800 focus:border-sky-500'
+                          className={`w-full bg-slate-950 border text-xs sm:text-sm rounded-none px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-amber-500 ${
+                            errors.email ? 'border-red-555 border-red-500' : 'border-slate-800 focus:border-amber-500'
                           }`}
                           placeholder="sabine.mueller@example.de"
                         />
                         {errors.email && (
-                          <p className="text-xs text-red-400 flex items-center mt-1">
+                          <p className="text-[11px] text-red-500 flex items-center mt-1">
                             <AlertCircle size={12} className="mr-1" />
                             {errors.email}
                           </p>
@@ -314,13 +313,12 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
 
                     </div>
 
-                    {/* Phone & Service selection */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       
                       {/* Phone field */}
                       <div className="space-y-2">
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
-                          Telefonnummer <span className="text-sky-400">*</span>
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-300">
+                          Telefonnummer <span className="text-amber-500">*</span>
                         </label>
                         <input
                           type="tel"
@@ -328,13 +326,13 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                           required
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className={`w-full bg-slate-950 border text-sm rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 ${
-                            errors.phone ? 'border-red-500' : 'border-slate-800 focus:border-sky-500'
+                          className={`w-full bg-slate-950 border text-xs sm:text-sm rounded-none px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-amber-500 ${
+                            errors.phone ? 'border-red-555 border-red-500' : 'border-slate-800 focus:border-amber-500'
                           }`}
                           placeholder="z. B. 0641 / 987654"
                         />
                         {errors.phone && (
-                          <p className="text-xs text-red-400 flex items-center mt-1">
+                          <p className="text-[11px] text-red-500 flex items-center mt-1">
                             <AlertCircle size={12} className="mr-1" />
                             {errors.phone}
                           </p>
@@ -343,18 +341,18 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
 
                       {/* Dropdown service categorization field */}
                       <div className="space-y-2">
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
-                          Anfrage-Bereich
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-300">
+                          Gewerke-Bereich
                         </label>
                         <select
                           name="serviceType"
                           value={formData.serviceType}
                           onChange={handleInputChange}
-                          className="w-full bg-slate-950 border border-slate-800 text-sm rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 appearance-none cursor-pointer"
+                          className="w-full bg-slate-950 border border-slate-800 text-xs sm:text-sm rounded-none px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-amber-500 appearance-none cursor-pointer"
                         >
-                          <option value="Fenster">Hocheffiziente Fenster</option>
-                          <option value="Haustür">Premium-Haustüren</option>
-                          <option value="Montage/Service">Zertifizierte Montage / Reparatur</option>
+                          <option value="Hoch- & Tiefbau">Hoch- & Tiefbau (Erdarbeiten, Keller etc.)</option>
+                          <option value="Sanierung & Umbau">Sanierung & Umbau (Modernisierungen)</option>
+                          <option value="Außenanlagen">Außenanlagen (Garten, Wege, Pflasterarbeiten)</option>
                           <option value="Sonstiges">Sonstiges</option>
                         </select>
                       </div>
@@ -362,46 +360,41 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                     </div>
 
                     {/* Zip code (PLZ) and City */}
-                    <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-start">
+                    <div className="space-y-4">
                       
                       {/* Zip PLZ field */}
-                      <div className="sm:col-span-5 space-y-2">
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
-                          Postleitzahl (PLZ) <span className="text-blue-400">*</span>
+                      <div className="space-y-2">
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-305">
+                          Postleitzahl & Ort <span className="text-amber-500">*</span>
                         </label>
-                        <input
-                          type="text"
-                          name="zipCode"
-                          required
-                          maxLength={5}
-                          value={formData.zipCode}
-                          onChange={handleInputChange}
-                          className={`w-full bg-black/40 border text-sm font-mono rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-600/20 ${
-                            errors.zipCode ? 'border-red-500' : 'border-white/10 focus:border-blue-600'
-                          }`}
-                          placeholder="z. B. 35390"
-                        />
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <input
+                            type="text"
+                            name="zipCode"
+                            required
+                            maxLength={5}
+                            value={formData.zipCode}
+                            onChange={handleInputChange}
+                            className={`w-full bg-slate-950 border text-xs sm:text-sm font-mono rounded-none px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-amber-500 ${
+                              errors.zipCode ? 'border-red-555 border-red-500' : 'border-slate-800 focus:border-amber-500'
+                            }`}
+                            placeholder="PLZ (z. B. 35390)"
+                          />
+                          <input
+                            type="text"
+                            name="city"
+                            value={formData.city}
+                            onChange={handleInputChange}
+                            className="w-full bg-slate-950 border border-slate-800 text-xs sm:text-sm rounded-none px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-amber-500"
+                            placeholder="Ort (z. B. Gießen)"
+                          />
+                        </div>
                         {errors.zipCode && (
-                          <p className="text-xs text-red-500 flex items-center mt-1">
+                          <p className="text-[11px] text-red-500 flex items-center mt-1">
                             <AlertCircle size={12} className="mr-1" />
                             {errors.zipCode}
                           </p>
                         )}
-                      </div>
-
-                      {/* City/Ort field */}
-                      <div className="sm:col-span-7 space-y-2">
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
-                          Ort / Stadt
-                        </label>
-                        <input
-                          type="text"
-                          name="city"
-                          value={formData.city}
-                          onChange={handleInputChange}
-                          className="w-full bg-black/40 border border-white/10 text-sm rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600"
-                          placeholder="z. B. Gießen"
-                        />
                       </div>
 
                     </div>
@@ -413,13 +406,13 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
-                          className={`text-xs p-3.5 rounded-xl border flex items-start space-x-2.5 ${
+                          className={`text-xs p-3.5 border flex items-start space-x-2.5 ${
                             zipResult.isInArea 
-                              ? 'bg-blue-600/10 border-blue-500/25 text-blue-200' 
-                              : 'bg-amber-500/5 border-amber-500/10 text-amber-300'
+                              ? 'bg-amber-600/10 border-amber-500/25 text-amber-200' 
+                              : 'bg-red-500/5 border-red-500/10 text-red-300'
                           }`}
                         >
-                          <MapPin size={16} className={`${zipResult.isInArea ? 'text-blue-400' : 'text-amber-400'} shrink-0 mt-0.5`} />
+                          <MapPin size={16} className={`${zipResult.isInArea ? 'text-amber-450' : 'text-red-400'} shrink-0 mt-0.5`} />
                           <div>
                             <span className="font-bold">{zipResult.recommendedCity || 'Service-Prüfung'}</span>: {zipResult.message}
                           </div>
@@ -429,7 +422,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
 
                     {/* Message Details text field */}
                     <div className="space-y-2">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-350">
                         Ihre Nachricht / Projektdetails <span className="text-slate-500 text-[10px] font-normal">(Optional)</span>
                       </label>
                       <textarea
@@ -437,8 +430,8 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                         value={formData.details}
                         onChange={handleInputChange}
                         rows={4}
-                        className="w-full bg-black/40 border border-white/10 text-sm rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600"
-                        placeholder="z. B. Maße der Haustür, Anzahl der Fenster, gewünschte Dreifachverglasung, ca. Baujahr der Immobilie..."
+                        className="w-full bg-slate-950 border border-slate-800 text-xs sm:text-sm rounded-none px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-amber-500"
+                        placeholder="z. B. Umfang der Erdarbeiten, gewünschte Pflastersteine, geplanter Baubeginn, ca. Grundstücksfläche..."
                       />
                     </div>
 
@@ -451,14 +444,14 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                           type="checkbox"
                           checked={formData.gdprConsent}
                           onChange={handleInputChange}
-                          className="h-4.5 w-4.5 rounded text-blue-600 focus:ring-blue-600/25 bg-black/40 border-white/10 mt-0.5 cursor-pointer shrink-0"
+                          className="h-4 w-4 rounded text-amber-600 focus:ring-amber-500/25 bg-slate-950 border-slate-800 mt-0.5 cursor-pointer shrink-0"
                         />
-                        <label htmlFor="gdprConsent" className="ml-3 text-xs text-slate-300 leading-relaxed cursor-pointer select-none">
-                          Ich stimme den <span className="text-blue-400 hover:underline">Datenschutzbestimmungen</span> zu. Meine Daten werden ausschließlich zur Kontaktaufnahme bzgl. dieser Anfrage verarbeitet. <span className="text-blue-400 font-bold">*</span>
+                        <label htmlFor="gdprConsent" className="ml-3 text-[11px] text-slate-350 leading-relaxed cursor-pointer select-none">
+                          Ich stimme den <span className="text-amber-500 hover:underline">Datenschutzbestimmungen</span> zu. Meine Daten werden ausschließlich zur Kontaktaufnahme bzgl. dieser Anfrage verarbeitet. <span className="text-amber-500 font-bold">*</span>
                         </label>
                       </div>
                       {errors.gdprConsent && (
-                        <p className="text-xs text-red-400 flex items-center mt-1">
+                        <p className="text-[11px] text-red-555 text-red-500 flex items-center mt-1">
                           <AlertCircle size={12} className="mr-1" />
                           {errors.gdprConsent}
                         </p>
@@ -469,22 +462,23 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-center py-4 rounded-xl cursor-pointer shadow-xl shadow-blue-600/15 flex items-center justify-center space-x-2.5 transition-all text-sm uppercase tracking-wider"
+                      className="w-full text-zinc-950 font-bold text-center py-4 cursor-pointer shadow-xl flex items-center justify-center space-x-2.5 transition-all text-xs uppercase tracking-wider rounded-none"
+                      style={{ backgroundColor: "#d97706" }}
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <div className="w-4.5 h-4.5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
                           <span>Ihre Anfrage wird gesendet...</span>
                         </>
                       ) : (
                         <>
-                          <Send size={15} />
-                          <span>Anfrage unverbindlich senden</span>
+                          <Send size={13} style={{ color: "#000000" }} />
+                          <span>Projekt starten / Anfrage Senden</span>
                         </>
                       )}
                     </button>
                     
-                    <p className="text-[10px] text-slate-400 text-center">
+                    <p className="text-[10px] text-[#64748b] text-center">
                       Durch Klicken auf den Button senden Sie eine unverbindliche Anfrage. Es kommt kein direkter Kaufvertrag zustande.
                     </p>
                   </form>
@@ -498,7 +492,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                   exit={{ opacity: 0 }}
                   className="space-y-6 text-center py-10"
                 >
-                  <div className="inline-flex w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-400/25 text-emerald-400 items-center justify-center mx-auto mb-2">
+                  <div className="inline-flex w-16 h-16 rounded-full bg-emerald-505 bg-emerald-500/10 border border-emerald-400/25 text-emerald-400 items-center justify-center mx-auto mb-2 animate-bounce">
                     <Check size={32} />
                   </div>
                   
@@ -510,13 +504,13 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                   </div>
 
                   {/* Summary Box resembling a nice Quotation Inquiry Ticket */}
-                  <div className="bg-black/30 border border-white/10 rounded-2xl max-w-lg mx-auto text-left overflow-hidden font-sans">
-                    <div className="bg-[#121618] border-b border-white/10 py-3.5 px-5 flex justify-between items-center text-xs text-slate-350 font-mono">
+                  <div className="bg-[#12161a] border border-white/10 rounded-none max-w-lg mx-auto text-left overflow-hidden font-sans">
+                    <div className="bg-[#181c1e] border-b border-white/10 py-3.5 px-5 flex justify-between items-center text-xs text-slate-350 font-mono">
                       <span>BELEG-NR: GIE-{(100000 + Math.floor(Math.random() * 900000))}</span>
-                      <span className="text-blue-400">✓ PRÜFUNG ERFOLGREICH</span>
+                      <span className="text-amber-500">✓ PRÜFUNG ERFOLGREICH</span>
                     </div>
                     
-                    <div className="p-5 space-y-3 text-xs sm:text-sm">
+                    <div className="p-5 space-y-3 text-xs sm:text-xs">
                       <div className="flex justify-between border-b border-white/5 pb-2">
                         <span className="text-slate-400">Bereich:</span>
                         <span className="font-semibold text-white">{formData.serviceType}</span>
@@ -535,7 +529,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                       </div>
                       {formData.details && (
                         <div className="pt-1.5">
-                          <span className="text-slate-400 text-xs block mb-1">Details:</span>
+                          <span className="text-slate-450 text-xs block mb-1">Details:</span>
                           <p className="text-slate-305 text-xs font-light italic leading-relaxed bg-black/40 p-2.5 rounded border border-white/5">
                             "{formData.details}"
                           </p>
@@ -547,13 +541,13 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                   <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                     <button
                       onClick={resetForm}
-                      className="w-full sm:w-auto bg-[#383e42] hover:bg-black/20 text-slate-250 text-xs font-bold py-3.5 px-6 rounded-lg transition-all border border-white/10 cursor-pointer"
+                      className="w-full sm:w-auto bg-[#383e42] hover:bg-black/20 text-slate-205 text-slate-200 text-xs font-bold py-3.5 px-6 rounded-none transition-all border border-white/10 cursor-pointer"
                     >
                       Neue Anfrage stellen
                     </button>
                     <a
-                      href={`mailto:hamdonmez@gmail.com?subject=Inquiry Gießen Fenster-Türen&body=Hallo,%0D%0A%0D%0Anachfolgende Anfrage wurde generiert:%0D%0AName: ${formData.fullName}%0D%0ATelefon: ${formData.phone}%0D%0APLZ: ${formData.zipCode}%0D%0ABereich: ${formData.serviceType}%0D%0ADetails: ${formData.details}`}
-                      className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-3.5 px-6 rounded-lg text-center cursor-pointer shadow-lg inline-flex items-center justify-center font-sans tracking-wide"
+                      href={`mailto:hamdonmez@gmail.com?subject=Bauanfrage Zenit Bau Gießen&body=Hallo,%0D%0A%0D%0Anachfolgende Anfrage wurde generiert:%0D%0AName: ${formData.fullName}%0D%0ATelefon: ${formData.phone}%0D%0APLZ: ${formData.zipCode}%0D%0ABereich: ${formData.serviceType}%0D%0ADetails: ${formData.details}`}
+                      className="w-full sm:w-auto bg-amber-505 bg-amber-600 hover:bg-amber-700 text-slate-950 text-xs font-bold py-3.5 px-6 rounded-none text-center cursor-pointer shadow-lg inline-flex items-center justify-center font-sans tracking-wide"
                     >
                       Kopie an E-Mail senden
                     </a>
@@ -565,23 +559,23 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
 
         </div>
 
-        {/* Demo Submissions lead history row (Optional Local Sandbox view for the admin to debug in preview!) */}
+        {/* Demo Submissions lead history row */}
         {submittedInquiries.length > 0 && (
           <div className="mt-20 border-t border-white/10 pt-16" id="lead-inbox-history">
             <div className="flex items-center justify-between mb-8">
               <div className="space-y-1">
                 <h4 className="text-md sm:text-lg font-bold text-white flex items-center">
-                  <ClipboardList size={18} className="text-blue-400 mr-2" />
+                  <ClipboardList size={18} className="text-amber-500 mr-2" />
                   <span>Ihre Test-Anfragen (Lokal gespeichert)</span>
                 </h4>
                 <p className="text-xs text-slate-400">Diese Liste existiert nur in Ihrer Browser-Vorschau zur Kontrolle des Anfrage-Funnels.</p>
               </div>
               <button
                 onClick={() => {
-                  localStorage.removeItem('giessen_fenster_inquiries');
+                  localStorage.removeItem('giessen_zenit_bau_inquiries');
                   setSubmittedInquiries([]);
                 }}
-                className="text-slate-400 hover:text-white text-xs hover:underline border border-white/10 hover:border-white/25 py-1 px-3.5 rounded bg-black/25"
+                className="text-slate-455 text-zinc-400 hover:text-white text-xs hover:underline border border-white/10 hover:border-white/25 py-1 px-3.5 rounded bg-black/25 cursor-pointer rounded-none"
               >
                 Liste leeren
               </button>
@@ -589,16 +583,16 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {submittedInquiries.map((inq, index) => (
-                <div key={index} className="bg-[#242A2E] border border-white/10 p-6 rounded-2xl relative">
+                <div key={index} className="bg-[#12161a] border border-white/10 p-6 rounded-none relative">
                   <div className="flex justify-between items-start mb-3">
-                    <span className="text-blue-400 text-xs font-bold uppercase tracking-wider">{inq.serviceType}</span>
-                    <span className="font-mono text-[9px] text-slate-400 uppercase">{inq.zipCode} {inq.city}</span>
+                    <span className="text-amber-500 text-xs font-bold uppercase tracking-wider">{inq.serviceType}</span>
+                    <span className="font-mono text-[9px] text-[#94a3b8] uppercase">{inq.zipCode} {inq.city}</span>
                   </div>
                   <h5 className="font-bold text-white text-sm sm:text-base truncate">{inq.fullName}</h5>
                   <p className="text-xs text-slate-400 font-mono mt-1">{inq.email}</p>
                   <p className="text-xs text-slate-400 font-mono">{inq.phone}</p>
                   {inq.details && (
-                    <p className="text-xs text-slate-350 italic mt-3 bg-black/40 p-2 rounded border border-white/5 truncate">
+                    <p className="text-[11px] text-slate-350 italic mt-3 bg-black/40 p-2 rounded border border-white/5 truncate">
                       "{inq.details}"
                     </p>
                   )}

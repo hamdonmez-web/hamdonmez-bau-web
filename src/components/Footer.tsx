@@ -7,8 +7,8 @@ export default function Footer() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <footer className="bg-[#121618] text-slate-400 pt-20 pb-12 border-t border-white/5 overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <footer className="bg-slate-950 text-slate-400 pt-20 pb-12 border-t border-white/5 overflow-hidden relative">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         
         {/* Main Grid content */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16">
@@ -16,10 +16,10 @@ export default function Footer() {
           {/* Col 1: About & Info Gießen */}
           <div className="md:col-span-4 space-y-5">
             <div className="flex items-center">
-              <Logo size="sm" variant="dark" />
+              <Logo size="md" variant="dark" />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
-              Ihr zertifizierter Premium-Anbieter für hocheffiziente Hebe-Schiebetüren, moderne Renovierungsfenster, schallgedämmte Haustüren und meisterhafte RAL-Demontage und -Neumontage in ganz Mittelhessen.
+              Ihr zertifizierter meistergeführter Baupartner für Hoch- & Tiefbau, energetische Sanierung, anspruchsvolle Umbauten und repräsentative Außenanlagen in Gießen und ganz Mittelhessen.
             </p>
             
             {/* Call to Exporter */}
@@ -39,20 +39,20 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-wider">Montagestützpunkt</h4>
             <div className="space-y-3.5 text-xs">
               <div className="flex items-start">
-                <MapPin size={16} className="text-blue-400 mr-2.5 shrink-0 mt-0.5" />
+                <MapPin size={16} className="text-amber-500 mr-2.5 shrink-0 mt-0.5" />
                 <span className="text-slate-300 font-normal leading-relaxed">
                   Marburger Straße 78,<br />
                   35390 Gießen, Hessen
                 </span>
               </div>
               <div className="flex items-center">
-                <Mail size={15} className="text-blue-400 mr-2.5 shrink-0" />
-                <a href="mailto:kontakt@giessen-fenster.de" className="text-slate-300 hover:text-white transition-colors">
-                  kontakt@giessen-fenster.de
+                <Mail size={15} className="text-amber-500 mr-2.5 shrink-0" />
+                <a href="mailto:kontakt@zenit-bau-giessen.de" className="text-slate-300 hover:text-white transition-colors">
+                  kontakt@zenit-bau-giessen.de
                 </a>
               </div>
               <div className="flex items-center">
-                <Phone size={15} className="text-blue-400 mr-2.5 shrink-0" />
+                <Phone size={15} className="text-amber-500 mr-2.5 shrink-0" />
                 <a href="tel:+49641123456" className="text-slate-300 hover:text-white transition-colors font-semibold">
                   0641 / 123 456
                 </a>
@@ -65,19 +65,19 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-wider">Servicegebiete</h4>
             <ul className="text-xs text-slate-400 space-y-2 font-light">
               <li className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
                 <span>Gießen, Wettenberg & Linden</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
                 <span>Pohlheim, Buseck & Heuchelheim</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
                 <span>Wetzlar & Lahn-Dill-Kreis</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
                 <span>Wetteraukreis (Butzbach, Friedberg)</span>
               </li>
             </ul>

@@ -1,4 +1,4 @@
-import { Sparkles, Calendar, TrendingDown, HelpCircle, ShieldCheck } from 'lucide-react';
+import { Sparkles, Calendar, TrendingDown, ShieldCheck } from 'lucide-react';
 import { SUMMER_PROMO } from '../data';
 
 export default function Promo() {
@@ -10,24 +10,24 @@ export default function Promo() {
   };
 
   return (
-    <section id="angebote" className="py-24 bg-slate-905 text-white relative overflow-hidden" style={{ backgroundColor: '#2e3337' }}>
-      {/* Visual Ambient Grid / Ornaments */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(37,99,235,0.1),transparent_50%)]" />
-      <div className="absolute -left-20 bottom-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl" />
+    <section id="angebote" className="py-24 bg-slate-900 text-white relative overflow-hidden">
+      {/* Decorative ambient gradients matching the modernist look */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(217,119,6,0.1),transparent_50%)]" />
+      <div className="absolute -left-20 bottom-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         
         {/* Module Title */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="inline-flex items-center space-x-1.5 bg-blue-600/15 border border-blue-500/20 text-blue-400 font-mono text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full">
-            <Sparkles size={14} className="text-blue-400" />
-            <span>Exklusiver Preisvorteil</span>
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
+          <span className="inline-flex items-center space-x-1.5 bg-amber-500/10 border border-amber-500/20 text-amber-300 font-mono text-xs uppercase tracking-widest px-4 py-1.5 rounded-full">
+            <Sparkles size={13} className="text-amber-500" />
+            <span>Exklusiver Planungsvorteil 2026</span>
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">
-            Aktuelle Angebote & Energie-Sparaktionen
+          <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight font-sans">
+            Aktuelle Angebote & Statik-Vorteile
           </h2>
-          <p className="text-slate-350 text-lg font-light">
-            Modernere Fenster sparen bares Geld. Nutzen Sie unsere laufenden Angebote, um Ihr Modernisierungsprojekt im Raum Gießen noch wirtschaftlicher zu verwirklichen.
+          <p className="text-slate-400 text-xs sm:text-sm font-light max-w-xl mx-auto">
+            Präzise Vorbereitung spart bares Geld und verkürzt Bauzeiten. Nutzen Sie unsere laufenden Aktionen für Ihr Bauvorhaben im Raum Gießen.
           </p>
         </div>
 
@@ -35,124 +35,127 @@ export default function Promo() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch" id="promotion-campaign-card">
           
           {/* Main Campaign Visual & Text Card */}
-          <div className="lg:col-span-8 bg-[#242A2E]/80 border border-white/10 rounded-3xl p-8 sm:p-12 backdrop-blur-md flex flex-col justify-between space-y-8 relative overflow-hidden">
+          <div className="lg:col-span-8 bg-slate-950/80 border border-white/5 rounded-3xl p-8 sm:p-12 backdrop-blur-md flex flex-col justify-between space-y-8 relative overflow-hidden">
             {/* Corner Badge */}
-            <div className="absolute top-0 right-0 bg-blue-600 text-white font-mono text-xs font-black uppercase tracking-wider py-2 px-6 rounded-bl-2xl">
+            <div className="absolute top-0 right-0 font-mono text-xs font-black uppercase tracking-wider py-2.5 px-6 rounded-bl-2xl text-white" style={{ backgroundColor: "#d97706" }}>
               {SUMMER_PROMO.badge}
             </div>
 
-            <div className="space-y-6">
-              <span className="text-blue-300 font-bold uppercase tracking-wider text-xs sm:text-sm block">
+            <div className="space-y-4">
+              <span className="text-amber-400 font-bold uppercase tracking-widest text-xs block">
                 {SUMMER_PROMO.subtitle}
               </span>
-              <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight font-sans">
+              <h3 className="text-2xl sm:text-3xl font-light text-white tracking-tight font-sans">
                 {SUMMER_PROMO.title}
               </h3>
-              <p className="text-slate-300 text-base leading-relaxed font-light max-w-3xl">
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed font-light max-w-3xl">
                 {SUMMER_PROMO.description}
               </p>
             </div>
 
-            {/* Side-by-side Double vs Triple Comparison */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+            {/* Side-by-side Planning Comparison */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/5">
               
-              {/* Standard Glazing */}
-              <div className="bg-black/30 p-5 rounded-xl border border-white/5">
-                <span className="text-slate-400 text-xs uppercase font-semibold font-mono">Bisheriger Standard</span>
-                <p className="text-lg font-bold text-slate-300 mt-1">Zweifachverglasung</p>
+              {/* Standard Glazing / Competitor setup */}
+              <div className="bg-slate-900/40 p-5 border border-white/5">
+                <span className="text-slate-500 text-[10px] uppercase font-semibold font-mono tracking-wider">Einzelbeauftragung</span>
+                <p className="text-base font-bold text-slate-305 mt-1 text-slate-300">Externe Statik & Gutachten</p>
                 <div className="mt-3 space-y-1.5 text-xs text-slate-400">
                   <div className="flex justify-between">
-                    <span>Dämmwert Ug:</span>
-                    <span className="font-semibold text-slate-350">1,1 W/(m²K)</span>
+                    <span>Statische Vorplanung:</span>
+                    <span className="font-semibold">ca. 950 € Zuzahlung</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Lärmminderung:</span>
-                    <span className="font-semibold text-slate-350">ca. 32 dB</span>
+                    <span>3D-Geländevermessung:</span>
+                    <span className="font-semibold">ca. 550 € Zuzahlung</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Heizkosten-Erhöhung:</span>
-                    <span className="font-semibold text-red-400">+15% Energieverlust</span>
+                  <div className="flex justify-between text-red-400/90 font-medium">
+                    <span>Schnittstellenrisiko:</span>
+                    <span>Verantwortung gesplittet</span>
                   </div>
                 </div>
               </div>
 
               {/* Action Double Upgrade */}
-              <div className="bg-blue-600/10 p-5 rounded-xl border border-blue-500/25 relative overflow-hidden">
-                <div className="absolute right-3 top-3 bg-blue-600 text-white font-mono font-bold text-[10px] uppercase py-0.5 px-2 rounded">
-                  GRATIS UPGRADE
+              <div className="bg-amber-600/10 p-5 border border-amber-500/20 relative overflow-hidden" style={{ backgroundColor: "rgba(217, 119, 6, 0.05)" }}>
+                <div className="absolute right-3 top-3 bg-amber-600 text-white font-mono font-bold text-[9px] uppercase py-0.5 px-2 rounded">
+                  GRAZIS INBEGRIFFEN
                 </div>
-                <span className="text-blue-300 text-xs uppercase font-semibold font-mono">Sommer Aktionspaket</span>
-                <p className="text-lg font-bold text-blue-400 mt-1">Hocheffiziente 3-fach Verglasung</p>
-                <div className="mt-3 space-y-1.5 text-xs text-slate-200">
+                <span className="text-amber-400 text-[10px] uppercase font-semibold font-mono tracking-wider">Zenit Bau Vorteil</span>
+                <p className="text-base font-bold text-amber-300 mt-1">Vollständiges Statik-Paket</p>
+                <div className="mt-3 space-y-1.5 text-xs text-slate-300">
                   <div className="flex justify-between">
-                    <span>Spitzen-Dämmwert Ug:</span>
-                    <span className="font-semibold text-white">0,5 W/(m²K) (Bestwert!)</span>
+                    <span>Tragwerksvorplanung:</span>
+                    <span className="font-semibold text-white">0 € (Im Auftragswert)</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Flüsterleise Umgebung:</span>
-                    <span className="font-semibold text-white">ca. 42 dB (-90% Lärmpfinden)</span>
+                    <span>Präzisions-Gutachten:</span>
+                    <span className="font-semibold text-white">0 € (Im Auftragswert)</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Heizkosten-Ersparnis:</span>
-                    <span className="font-semibold text-emerald-400">Bis zu 180 € p.a. pro Haus</span>
+                  <div className="flex justify-between text-emerald-400 font-medium">
+                    <span>Einsparung & Planbarkeit:</span>
+                    <span>Über 1.500 € Sofort-Ersparnis</span>
                   </div>
                 </div>
               </div>
 
             </div>
 
-            {/* Bottom meta details and CTA */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10">
-              <div className="flex items-center text-slate-400 text-xs sm:text-sm">
-                <Calendar size={16} className="text-blue-400 mr-2" />
+            {/* Bottom details and CTA */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/5">
+              <div className="flex items-center text-slate-400 text-xs">
+                <Calendar size={14} className="text-amber-500 mr-2" />
                 <span>Gültig für Angebote bis zum: <strong className="text-white font-semibold">{SUMMER_PROMO.validUntil}</strong></span>
               </div>
               <button
                 onClick={handleScrollToForm}
-                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-blue-600/20 cursor-pointer text-center"
+                className="w-full sm:w-auto text-white font-bold text-xs uppercase tracking-wider py-3.5 px-6 hover:brightness-110 active:scale-95 transition-all text-center rounded-none cursor-pointer"
+                style={{ backgroundColor: "#d97706" }}
               >
-                Vorteil sichern & unverbindlich anfragen
+                Vorteil sichern
               </button>
             </div>
           </div>
 
-          {/* Action Left/Right Card - Pricing Highlights */}
-          <div className="lg:col-span-4 bg-gradient-to-br from-[#242A2E] to-[#1a2332] border border-white/10 rounded-3xl p-8 flex flex-col justify-between text-center relative overflow-hidden">
+          {/* Pricing Highlight Card */}
+          <div className="lg:col-span-4 bg-slate-950 border border-white/5 rounded-3xl p-8 flex flex-col justify-between text-center relative overflow-hidden">
             <div className="space-y-6">
-              <span className="font-mono text-xs text-blue-400 tracking-wider font-extrabold uppercase">
-                Ersparnis-Kalkulation
+              <span className="font-mono text-[10px] text-amber-500 tracking-wider font-extrabold uppercase">
+                Ersparnis-Wert
               </span>
-              <div className="inline-flex w-32 h-32 bg-black/40 border border-white/10 rounded-full items-center justify-center shadow-inner pt-2">
-                <div>
-                  <span className="text-4xl font-extrabold text-white block leading-none">{SUMMER_PROMO.discount.split(' ')[0]}</span>
-                  <span className="text-xs text-blue-400 font-mono tracking-wider uppercase font-black">{SUMMER_PROMO.discount.split(' ')[1]}</span>
+              
+              <div className="inline-flex w-24 h-24 bg-slate-900 border border-white/5 rounded-full items-center justify-center shadow-inner">
+                <div className="p-2">
+                  <span className="text-2xl font-extrabold text-white block leading-none">1.500€</span>
+                  <span className="text-[9px] text-amber-500 font-mono tracking-wider uppercase font-black">Spargutschein</span>
                 </div>
               </div>
+
               <div className="space-y-3">
-                <h4 className="text-xl font-bold text-white font-sans tracking-tight">Echte Einsparungen</h4>
-                <p className="text-slate-300 text-sm leading-relaxed font-light">
-                  Durch das kostenfreie Dreifach-Glas Upgrade sparen Sie im Durchschnitt <strong className="text-white font-semibold">10% der Gesamtprojektkosten</strong> im Vergleich zu regulären Kaltprofilen mit Zweifachverglasung.
+                <h4 className="text-xl font-light text-white tracking-tight">Planungssicherheit</h4>
+                <p className="text-slate-400 text-xs leading-relaxed font-light">
+                  Durch den kostenfreien Statik- und Vermessungsservice legen wir den Grundstein für eine <strong className="text-white font-semibold">fehlerfreie und terminoptimierte Realisierung</strong> Ihres Rohbaus oder Gartenvorhabens.
                 </p>
               </div>
             </div>
 
             {/* Advantage List */}
-            <div className="space-y-3 text-left py-4 border-t border-b border-white/10 my-6">
-              <div className="flex items-center space-x-2.5 text-xs text-slate-300">
-                <ShieldCheck size={14} className="text-blue-400 animate-pulse" />
-                <span>RAL Gütesicherer Einbau möglich</span>
+            <div className="space-y-3 text-left py-4 border-t border-b border-white/5 my-6">
+              <div className="flex items-center space-x-2 text-xs text-slate-300">
+                <ShieldCheck size={13} className="text-amber-500 animate-pulse" />
+                <span className="text-[11px]">TÜV-geprüfte Statik-Modelle</span>
               </div>
-              <div className="flex items-center space-x-2.5 text-xs text-slate-300">
-                <TrendingDown size={14} className="text-blue-400" />
-                <span>Langfristiger Heizkostenschutz</span>
+              <div className="flex items-center space-x-2 text-xs text-slate-300">
+                <TrendingDown size={13} className="text-amber-500" />
+                <span className="text-[11px]">Volle Kostensicherheit ab Minute 1</span>
               </div>
             </div>
 
             <button
               onClick={handleScrollToForm}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-lg border border-transparent text-sm tracking-wide shadow-md transition-all cursor-pointer"
+              className="w-full text-zinc-900 font-bold bg-white hover:bg-slate-100 py-4 tracking-wider text-xs uppercase active:scale-95 transition-all text-center rounded-none cursor-pointer"
             >
-              Unverbindliches Aufmaß buchen
+              Unverbindlich Anfragen
             </button>
           </div>
 
