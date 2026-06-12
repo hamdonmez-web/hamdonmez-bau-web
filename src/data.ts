@@ -5,11 +5,22 @@ export const IMAGE_ASSETS = {
   window: '/src/assets/images/modern_window_1781111287014.png',
   door: '/src/assets/images/modern_door_1781111297940.png',
   installation: '/src/assets/images/window_installation_1781111308997.png',
+  // High-quality architectural Unsplash images for secondary visuals
+  doorAlt: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+  windowAlt: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+  patioAlt: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80',
+  rolladen: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80',
+  reference1: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
+  reference2: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+  reference3: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80',
 };
 
 // Known Gießen districts and nearby cities
 export const REGIONAL_PARTNERS = [
   'Gießen',
+  'Frankfurt',
+  'Hanau',
+  'Offenbach',
   'Wettenberg',
   'Pohlheim',
   'Buseck',
@@ -28,46 +39,46 @@ export const REGIONAL_PARTNERS = [
 
 export const SERVICES: ServiceItem[] = [
   {
-    id: 'hoch-tiefbau',
-    title: 'Hoch- & Tiefbau',
-    description: 'Professioneller Rohbau, Fundamente, Erdarbeiten und schlüsselfertiger Wohnungsbau nach höchsten Maßstäben.',
-    longDescription: 'Als starker Partner für Hoch- und Tiefbau realisieren wir schlüsselfertige Wohn- und Gewerbeprojekte in Gießen. Von der Erdsondierung und dem Fundamentbau über präzises Mauerwerk bis hin zum kompletten Rohbau – wir setzen auf moderne Baugeräte, statische Meisterleistung und langlebige Materialien.',
+    id: 'tueren',
+    title: 'Türen',
+    description: 'Hochwertige Eingangs- und Innentüren mit moderner Sicherheitstechnik und optimalem Schallschutz.',
+    longDescription: 'Wir bieten maßgeschneiderte Türlösungen für Ihr Zuhause. Von einbruchsicheren Hauseingangstüren bis hin zu eleganten Innentüren aus Holz, Aluminium oder Glas – wir sorgen für präzisen Einbau, langlebige Beschläge und hervorragende Wärmedämmung nach neuesten Standards.',
     features: [
-      'Eigener, hochmoderner Maschinenpark für Erdarbeiten',
-      'Ingenieurgeführte statische Berechnungen & Tragwerksplanung',
-      'Schlüsselfertiger Bau von Einfamilienhäusern & Gewerbeflächen',
-      'Präzises Vermessungsfeinaufmaß vor jedem Baustart',
-      'Festpreis- und Fertigstellungsgarantie'
+      'Einbruchschutz nach RC2- und RC3-Sicherheitsklassen',
+      'Hervorragende Schall- und Wärmedämmung',
+      'Individuelle Designs: Holz, Aluminium, Glas und Kunststoff',
+      'Elektronische Schließsysteme & Smart-Home-Integration möglich',
+      'Meisterhafter Einbau & Demontage der alten Türen'
     ],
-    imageUrl: IMAGE_ASSETS.hero,
+    imageUrl: IMAGE_ASSETS.door,
     badge: 'Festpreis'
   },
   {
-    id: 'sanierung',
-    title: 'Sanierung & Umbau',
-    description: 'Komplette energetische Sanierung, Denkmalschutz, Schadstoffsanierung und Modernisierung bestehender Gebäude.',
-    longDescription: 'Erhalten Sie den Wert historischer Bausubstanz oder machen Sie Ihren Altbau fit für die Zukunft. Unser Team ist spezialisiert auf hocheffiziente energetische Fassadendämmungen, statische Umbauten, Denkmalschutzauflagen sowie professionellen Innenausbau. Wir koordinieren alle Gewerke schlüsselfertig.',
+    id: 'fenster',
+    title: 'Fenster',
+    description: 'Energieeffiziente Fenster mit Mehrfachverglasung, hervorragender Wärmedämmung und modernem Design.',
+    longDescription: 'Sparen Sie Energiekosten durch moderne Fenster mit zeitgemäßer Mehrfachverglasung und optimaler Fugendichtheit. Unser meistergeführter Fachbetrieb übernimmt die Planung, Lieferung und den fachgerechten Einbau für langanhaltende Energieeffizienz.',
     features: [
-      'Energetische Gebäudesanierung nach KfW-Effizienzhaus-Standards',
-      'Umbauten, Wanddurchbrüche mit Stahlträger-Einzug',
-      'Schimmelsanierung, Schadstoffprüfung & Entkernung',
-      'Denkmalschutzgerechte Modernisierung mit feinsten Materialien',
-      'Professionelle Beratung bei KfW-Zuschüssen (bis zu 20% Förderung)'
+      'Hocheffiziente Verglasungen (2-fach / 3-fach)',
+      'Langlebige Profile aus Kunststoff, Holz oder Holz-Aluminium',
+      'Integrierter Schallschutz und verbesserter Einbruchschutz',
+      'Zertifizierter Einbau nach strengen RAL-Montagerichtlinien',
+      'Integrierte Rolladen- & Raffstore-Systeme für Sonnenschutz'
     ],
     imageUrl: IMAGE_ASSETS.window,
     badge: 'Nach Aufwand'
   },
   {
-    id: 'aussenanlagen',
-    title: 'Außenanlagen',
-    description: 'Pflasterarbeiten, repräsentative Einfahrten, Mauerbau und moderner Landschaftsbau für Ihr Grundstück.',
-    longDescription: 'Wir gestalten den Außenbereich Ihrer Immobilie repräsentativ und funktional. Ob anspruchsvolle Naturstein-Pflasterungen für Hofeinfahrten, Hangflor-Abstützungen, Zaunbau, Fundamente für Garagen oder der komplette landschaftsarchitektonische Gartenbau – wir schaffen harmonische Übergänge.',
+    id: 'terrassenueberdachung',
+    title: 'Terrassenüberdachung',
+    description: 'Elegante und freistehende oder angebaute Terrassendächer aus Aluminium und Sicherheitsglas.',
+    longDescription: 'Erweitern Sie Ihren Wohnraum ins Grüne und schützen Sie sich vor Sonne, Regen und Wind. Unsere maßgeschneiderten Terrassenüberdachungen aus pulverbeschichtetem Aluminium und robustem Sicherheitsglas vereinen extreme Langlebigkeit mit modernster Ästhetik.',
     features: [
-      'Hochwertige Pflasterungen für Zufahrten, Terrassen und Parkflächen',
-      'Stützmauern, Fundamentplatten & Sichtschutzsysteme',
-      'Professionelle Entwässerungs- & Rigolensysteme',
-      'Individuelle Gartengestaltung und Geländemodellierung',
-      'Einsatz von langlebigen Natur- & Betonsteinen aus Hessen'
+      'Robuste Aluminium-Konstruktion in Wunschfarbe (pulverbeschichtet)',
+      'Eindeckung mit Verbundsicherheitsglas (VSG) oder Polycarbonat',
+      'Umlaufende Entwässerung und unsichtbare Kabelkanäle',
+      'Maßgeschneiderte Markisen & textiler Sonnenschutz',
+      'Inklusive statischer Berechnung und meisterhafter Montage'
     ],
     imageUrl: IMAGE_ASSETS.installation,
     badge: 'Individuell'
@@ -170,8 +181,27 @@ export function checkZipCoverage(zip: string): { isInArea: boolean; recommendedC
     };
   }
 
-  // General Germany starting with 35 or 6
-  if (zip.startsWith('35') || zip.startsWith('61')) {
+  // Frankfurt am Main (60xxx)
+  if (zip.startsWith('60')) {
+    return {
+      isInArea: true,
+      recommendedCity: 'Frankfurt am Main',
+      message: '✓ Frankfurt gehört ab sofort zu unserem erweiterten Servicegebiet!'
+    };
+  }
+
+  // Offenbach am Main & Hanau (63xxx, specifically 630xx and 634xx)
+  if (zip.startsWith('630') || zip.startsWith('634')) {
+    const city = zip.startsWith('630') ? 'Offenbach am Main' : 'Hanau';
+    return {
+      isInArea: true,
+      recommendedCity: city,
+      message: `✓ ${city} gehört ab sofort zu unserem erweiterten Servicegebiet!`
+    };
+  }
+
+  // General Germany starting with 35 or 6 (including 63, 60 or general 6x)
+  if (zip.startsWith('35') || zip.startsWith('61') || zip.startsWith('60') || zip.startsWith('63')) {
     return {
       isInArea: true,
       recommendedCity: 'Mittelhessen',

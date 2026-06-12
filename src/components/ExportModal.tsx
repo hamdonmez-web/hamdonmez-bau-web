@@ -384,8 +384,8 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
                 <span class="font-bold text-white block mb-4">Kontakt & Anschrift</span>
                 <p class="text-xs text-slate-450 leading-loose">
                     Montagestützpunkt Gießen<br>
-                    Marburger Straße 78, 35390 Gießen<br>
-                    E-Mail: kontakt@giessen-fenster.de<br>
+                    Langer Strich 7, 35398 Gießen<br>
+                    E-Mail: info@zenit-bau.de<br>
                     Tel: 0641 / 123 456
                 </p>
             </div>
@@ -393,6 +393,7 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
                 <span class="font-bold text-white block mb-4">Servicebereich</span>
                 <ul class="text-xs text-slate-450 space-y-2">
                     <li>• Gießen & Wettenberg</li>
+                    <li>• Frankfurt, Hanau & Offenbach</li>
                     <li>• Linden & Pohlheim</li>
                     <li>• Wetzlar & Lahn-Dill</li>
                     <li>• Wetteraukreis (Bad Nauheim)</li>

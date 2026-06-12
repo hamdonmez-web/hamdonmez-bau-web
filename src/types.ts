@@ -14,7 +14,7 @@ export interface InquiryFormData {
   phone: string;
   zipCode: string;
   city: string;
-  serviceType: 'Hoch- & Tiefbau' | 'Sanierung & Umbau' | 'Außenanlagen' | 'Sonstiges';
+  serviceType: 'Türen' | 'Fenster' | 'Terrassenüberdachung' | 'Sonstiges';
   details: string;
   gdprConsent: boolean;
 }

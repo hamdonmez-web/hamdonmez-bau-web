@@ -1,10 +1,22 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Mail, Phone, MapPin, ExternalLink, ShieldAlert, BookOpen, GraduationCap, Code } from 'lucide-react';
 import ExportModal from './ExportModal';
 import Logo from './Logo';
 
-export default function Footer() {
+interface FooterProps {
+  onChangeTab?: (tab: 'startseite' | 'tueren' | 'fenster' | 'terrassenueberdachung' | 'referenzen' | 'kontakt' | 'impressum' | 'datenschutz' | 'cookies') => void;
+}
+
+export default function Footer({ onChangeTab }: FooterProps) {
   const [modalOpen, setModalOpen] = useState(false);
+
+  const handleLegalClick = (e: React.MouseEvent, tab: 'impressum' | 'datenschutz' | 'cookies') => {
+    e.preventDefault();
+    if (onChangeTab) {
+      onChangeTab(tab);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <footer className="bg-slate-950 text-slate-400 pt-20 pb-12 border-t border-white/5 overflow-hidden relative">
@@ -16,7 +28,7 @@ export default function Footer() {
           {/* Col 1: About & Info Gießen */}
           <div className="md:col-span-4 space-y-5">
             <div className="flex items-center">
-              <Logo size="md" variant="dark" />
+              <Logo size="md" variant="light" />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
               Ihr zertifizierter meistergeführter Baupartner für Hoch- & Tiefbau, energetische Sanierung, anspruchsvolle Umbauten und repräsentative Außenanlagen in Gießen und ganz Mittelhessen.
@@ -39,20 +51,20 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-wider">Montagestützpunkt</h4>
             <div className="space-y-3.5 text-xs">
               <div className="flex items-start">
-                <MapPin size={16} className="text-amber-500 mr-2.5 shrink-0 mt-0.5" />
+                <MapPin size={16} className="text-white/60 mr-2.5 shrink-0 mt-0.5" />
                 <span className="text-slate-300 font-normal leading-relaxed">
-                  Marburger Straße 78,<br />
-                  35390 Gießen, Hessen
+                  Langer Strich 7,<br />
+                  35398 Gießen, Hessen
                 </span>
               </div>
               <div className="flex items-center">
-                <Mail size={15} className="text-amber-500 mr-2.5 shrink-0" />
-                <a href="mailto:kontakt@zenit-bau-giessen.de" className="text-slate-300 hover:text-white transition-colors">
-                  kontakt@zenit-bau-giessen.de
+                <Mail size={15} className="text-white/60 mr-2.5 shrink-0" />
+                <a href="mailto:info@zenit-bau.de" className="text-slate-300 hover:text-white transition-colors">
+                  info@zenit-bau.de
                 </a>
               </div>
               <div className="flex items-center">
-                <Phone size={15} className="text-amber-500 mr-2.5 shrink-0" />
+                <Phone size={15} className="text-white/60 mr-2.5 shrink-0" />
                 <a href="tel:+49641123456" className="text-slate-300 hover:text-white transition-colors font-semibold">
                   0641 / 123 456
                 </a>
@@ -65,19 +77,23 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-wider">Servicegebiete</h4>
             <ul className="text-xs text-slate-400 space-y-2 font-light">
               <li className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-650 bg-zinc-500" />
                 <span>Gießen, Wettenberg & Linden</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-650 bg-zinc-500" />
+                <span>Frankfurt, Hanau & Offenbach</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-650 bg-zinc-500" />
                 <span>Pohlheim, Buseck & Heuchelheim</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-650 bg-zinc-500" />
                 <span>Wetzlar & Lahn-Dill-Kreis</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-650 bg-zinc-500" />
                 <span>Wetteraukreis (Butzbach, Friedberg)</span>
               </li>
             </ul>
@@ -87,15 +103,24 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-4">
             <h4 className="text-white font-bold text-sm uppercase tracking-wider font-sans">Rechtliches</h4>
             <div className="space-y-2 text-xs font-light">
-              <a href="#home" className="block text-slate-400 hover:text-white transition-colors">
+              <button 
+                onClick={(e) => handleLegalClick(e, 'impressum')} 
+                className="block text-left text-slate-400 hover:text-white transition-colors cursor-pointer w-full focus:outline-none"
+              >
                 Impressum
-              </a>
-              <a href="#home" className="block text-slate-400 hover:text-white transition-colors">
+              </button>
+              <button 
+                onClick={(e) => handleLegalClick(e, 'datenschutz')} 
+                className="block text-left text-slate-400 hover:text-white transition-colors cursor-pointer w-full focus:outline-none"
+              >
                 Datenschutzerklärung
-              </a>
-              <a href="#home" className="block text-slate-400 hover:text-white transition-colors">
+              </button>
+              <button 
+                onClick={(e) => handleLegalClick(e, 'cookies')} 
+                className="block text-left text-slate-400 hover:text-white transition-colors cursor-pointer w-full focus:outline-none"
+              >
                 Cookie-Einstellungen
-              </a>
+              </button>
             </div>
           </div>
 

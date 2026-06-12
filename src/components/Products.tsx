@@ -5,16 +5,16 @@ import { Check, ArrowRight, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
 import { ServiceItem } from '../types';
 
 interface ProductsProps {
-  onSelectService: (serviceType: 'Hoch- & Tiefbau' | 'Sanierung & Umbau' | 'Außenanlagen' | 'Sonstiges') => void;
+  onSelectService: (serviceType: 'Türen' | 'Fenster' | 'Terrassenüberdachung' | 'Sonstiges') => void;
 }
 
 export default function Products({ onSelectService }: ProductsProps) {
-  const [activeDetailId, setActiveDetailId] = useState<string | null>('hoch-tiefbau');
+  const [activeDetailId, setActiveDetailId] = useState<string | null>('tueren');
 
-  const getFormCategoryMapping = (id: string): 'Hoch- & Tiefbau' | 'Sanierung & Umbau' | 'Außenanlagen' | 'Sonstiges' => {
-    if (id === 'hoch-tiefbau') return 'Hoch- & Tiefbau';
-    if (id === 'sanierung') return 'Sanierung & Umbau';
-    if (id === 'aussenanlagen') return 'Außenanlagen';
+  const getFormCategoryMapping = (id: string): 'Türen' | 'Fenster' | 'Terrassenüberdachung' | 'Sonstiges' => {
+    if (id === 'tueren') return 'Türen';
+    if (id === 'fenster') return 'Fenster';
+    if (id === 'terrassenueberdachung') return 'Terrassenüberdachung';
     return 'Sonstiges';
   };
 
@@ -61,7 +61,7 @@ export default function Products({ onSelectService }: ProductsProps) {
               const IconComp = f.icon;
               return (
                 <div key={i} className="p-6 border border-slate-100 rounded-2xl hover:shadow-md transition bg-slate-50/30">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{ backgroundColor: "#d9770611", color: "#d97706" }}>
+                  <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4" style={{ backgroundColor: "#1e293b11", color: "#1e293b" }}>
                     <IconComp size={22} />
                   </div>
                   <h3 className="font-bold mb-2 text-slate-900 text-sm sm:text-base">{f.title}</h3>
@@ -94,22 +94,22 @@ export default function Products({ onSelectService }: ProductsProps) {
             const isExpanded = activeDetailId === service.id;
             
             const startingTags = [
-              { price: "Festpreis", label: "Hoch- & Tiefbau" },
-              { price: "Förderfähig", label: "Sanierung & Umbau" },
-              { price: "Individuell", label: "Außenanlagen" }
+              { price: "Festpreis", label: "Türen" },
+              { price: "Förderfähig", label: "Fenster" },
+              { price: "Individuell", label: "Terrassenüberdachung" }
             ];
 
             return (
               <div 
                 key={service.id}
                 className={`bg-white p-8 border rounded-2xl flex flex-col justify-between hover:shadow-lg transition-all ${
-                  isExpanded ? 'border-amber-600 ring-2 ring-amber-600/10' : 'border-slate-150'
+                  isExpanded ? 'border-zinc-900 ring-2 ring-zinc-900/10' : 'border-slate-150'
                 }`}
               >
                 <div>
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="font-bold text-slate-900 text-base sm:text-lg leading-snug">{service.title}</h3>
-                    <span className="px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider" style={{ backgroundColor: "#d9770615", color: "#d97706" }}>
+                    <span className="px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider" style={{ backgroundColor: "#1e293b11", color: "#1e293b" }}>
                       {startingTags[idx].price}
                     </span>
                   </div>
@@ -130,7 +130,7 @@ export default function Products({ onSelectService }: ProductsProps) {
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <button
                     onClick={() => setActiveDetailId(activeDetailId === service.id ? null : service.id)}
-                    className="text-slate-500 hover:text-[#d97706] text-[11px] font-semibold uppercase tracking-wider cursor-pointer"
+                    className="text-slate-500 hover:text-zinc-900 text-[11px] font-semibold uppercase tracking-wider cursor-pointer"
                   >
                     {isExpanded ? 'Details verbergen' : 'Details einblenden'}
                   </button>
@@ -141,7 +141,7 @@ export default function Products({ onSelectService }: ProductsProps) {
                     style={{ backgroundColor: "#0f172a" }}
                   >
                     <span>Anfragen</span>
-                    <ArrowRight size={10} style={{ color: "#d97706" }} />
+                    <ArrowRight size={10} style={{ color: "#ffffff" }} />
                   </button>
                 </div>
               </div>
@@ -167,11 +167,11 @@ export default function Products({ onSelectService }: ProductsProps) {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div className="lg:col-span-7 space-y-6">
                       <div className="flex items-center space-x-3 text-[11px] uppercase tracking-widest font-mono">
-                        <span className="bg-amber-600/20 border border-amber-500/30 px-3 py-1 rounded text-amber-300 font-bold">
+                        <span className="bg-zinc-800 border border-zinc-700 px-3 py-1 rounded text-zinc-300 font-bold">
                           DETAILED INFO
                         </span>
-                        <span className="text-slate-400 flex items-center">
-                          <Check size={12} className="mr-1 text-amber-500" />
+                        <span className="text-zinc-450 text-zinc-450 text-zinc-400 flex items-center">
+                          <Check size={12} className="mr-1 text-zinc-400" />
                           Garantierte Premium-Qualität
                         </span>
                       </div>
@@ -187,42 +187,41 @@ export default function Products({ onSelectService }: ProductsProps) {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                         {service.features.map((feat, i) => (
                           <div key={i} className="flex items-start space-x-2">
-                            <span className="flex items-center justify-center w-4.5 h-4.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] shrink-0 mt-0.5 font-bold">
+                            <span className="flex items-center justify-center w-4.5 h-4.5 rounded-full bg-zinc-800 text-zinc-300 text-[10px] shrink-0 mt-0.5 font-bold">
                               ✓
                             </span>
-                            <span className="text-slate-300 text-xs font-medium leading-normal">{feat}</span>
+                            <span className="text-zinc-300 text-xs font-medium leading-normal">{feat}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="lg:col-span-5 flex flex-col space-y-6 bg-slate-950 p-6 sm:p-8 rounded-2xl border border-white/5 justify-center self-stretch">
+                    <div className="lg:col-span-5 flex flex-col space-y-6 bg-zinc-950 p-6 sm:p-8 rounded-2xl border border-white/5 justify-center self-stretch">
                       <h4 className="text-sm font-bold uppercase tracking-wider text-white">
                         Vorteile unseres Fachbetriebs:
                       </h4>
                       
                       <div className="space-y-4">
                         <div className="flex items-start space-x-3 text-xs">
-                          <div className="text-amber-500 font-bold mt-0.5">✓</div>
+                          <div className="text-zinc-400 font-bold mt-0.5">✓</div>
                           <div>
                             <p className="font-bold text-slate-100 uppercase tracking-wider">Regionale Meisterbetreuung</p>
-                            <p className="text-slate-400 mt-1">Wir betreuen Sie permanent vor Ort im Raum Mittelhessen.</p>
+                            <p className="text-zinc-400 mt-1">Wir betreuen Sie permanent vor Ort im Raum Mittelhessen.</p>
                           </div>
                         </div>
 
                         <div className="flex items-start space-x-3 text-xs">
-                          <div className="text-amber-500 font-bold mt-0.5">✓</div>
+                          <div className="text-zinc-400 font-bold mt-0.5">✓</div>
                           <div>
                             <p className="font-bold text-slate-100 uppercase tracking-wider">Verbindlicher Festpreis</p>
-                            <p className="text-slate-400 mt-1">Zuverlässiges Angebot ohne versteckte Bearbeitungsgebühren.</p>
+                            <p className="text-zinc-400 mt-1">Zuverlässiges Angebot ohne versteckte Bearbeitungsgebühren.</p>
                           </div>
                         </div>
                       </div>
 
                       <button
                         onClick={() => handleCtaClick(service.id)}
-                        className="w-full text-white font-bold py-3.5 tracking-wider text-xs uppercase hover:brightness-110 active:scale-95 transition-all text-center rounded-none cursor-pointer text-slate-100"
-                        style={{ backgroundColor: "#0f172a" }}
+                        className="w-full bg-white hover:bg-zinc-200 text-zinc-950 font-bold py-3.5 tracking-wider text-xs uppercase hover:brightness-110 active:scale-95 transition-all text-center rounded-none cursor-pointer"
                       >
                         Projekt {service.title} anfragen
                       </button>
