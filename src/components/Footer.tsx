@@ -50,13 +50,18 @@ export default function Footer({ onChangeTab }: FooterProps) {
           <div className="md:col-span-3 space-y-4">
             <h4 className="text-white font-bold text-sm uppercase tracking-wider">Montagestützpunkt</h4>
             <div className="space-y-3.5 text-xs">
-              <div className="flex items-start">
-                <MapPin size={16} className="text-white/60 mr-2.5 shrink-0 mt-0.5" />
-                <span className="text-slate-300 font-normal leading-relaxed">
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Langer+Strich+7,+35398+Gie%C3%9Fen"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start group hover:text-white transition-colors"
+              >
+                <MapPin size={16} className="text-white/60 group-hover:text-white mr-2.5 shrink-0 mt-0.5 transition-colors" />
+                <span className="text-slate-300 group-hover:text-white font-normal leading-relaxed transition-colors border-b border-dashed border-slate-500 hover:border-white">
                   Langer Strich 7,<br />
                   35398 Gießen, Hessen
                 </span>
-              </div>
+              </a>
               <div className="flex items-center">
                 <Mail size={15} className="text-white/60 mr-2.5 shrink-0" />
                 <a href="mailto:info@zenit-bau.de" className="text-slate-300 hover:text-white transition-colors">

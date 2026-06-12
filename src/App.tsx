@@ -474,7 +474,7 @@ export default function App() {
                       <h4 className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-2">Angaben gemäß § 5 TMG</h4>
                       <h3 className="font-extrabold text-lg text-slate-900">Zenit Bau</h3>
                       <p className="text-slate-600 font-light mt-1 text-sm leading-relaxed">
-                        Langer Strich 7<br />
+                        Kropbacher Weg 19<br />
                         35398 Gießen<br />
                         Deutschland
                       </p>
@@ -585,7 +585,7 @@ export default function App() {
                     <div className="bg-slate-50 p-4 border border-slate-150 font-normal rounded-none">
                       <strong className="text-slate-900 block font-semibold mb-1">Zenit Bau</strong>
                       Inhaber: Hakan Dönmez<br />
-                      Langer Strich 7<br />
+                      Kropbacher Weg 19<br />
                       35398 Gießen<br />
                       E-Mail: <a href="mailto:info@zenit-bau.de" className="text-[#cc0000] hover:underline font-normal">info@zenit-bau.de</a><br />
                       Telefon: 0641 / 123 456

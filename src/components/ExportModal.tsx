@@ -384,7 +384,7 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
                 <span class="font-bold text-white block mb-4">Kontakt & Anschrift</span>
                 <p class="text-xs text-slate-450 leading-loose">
                     Montagestützpunkt Gießen<br>
-                    Langer Strich 7, 35398 Gießen<br>
+                    Kropbacher Weg 19, 35398 Gießen<br>
                     E-Mail: info@zenit-bau.de<br>
                     Tel: 0641 / 123 456
                 </p>
