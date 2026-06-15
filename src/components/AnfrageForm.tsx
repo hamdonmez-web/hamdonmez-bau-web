@@ -222,8 +222,8 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                   <Phone size={18} className="animate-pulse" />
                 </div>
                 <div>
-                  <a href="tel:+49641123456" className="text-base sm:text-lg font-light text-white block hover:text-zinc-350 transition-colors">
-                    0641 / 123 456
+                  <a href="tel:+496416535157" className="text-base sm:text-lg font-light text-white block hover:text-zinc-350 transition-colors">
+                    0641 / 6535157
                   </a>
                   <span className="text-[11px] text-[#94a3b8] block font-light">Montag - Samstag: 08:00 - 18:00 Uhr</span>
                 </div>
