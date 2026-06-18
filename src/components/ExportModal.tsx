@@ -64,9 +64,9 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
                 </span>
             </div>
             <div>
-                <a href="tel:+496416535157" class="flex items-center hover:text-sky-400 font-semibold transition-colors">
+                <a href="tel:+491787270484" class="flex items-center hover:text-sky-400 font-semibold transition-colors">
                     <svg class="w-3.5 h-3.5 mr-1 text-sky-450 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                    0641 / 6535157
+                    0178 7270484
                 </a>
             </div>
         </div>
@@ -386,7 +386,7 @@ export default function ExportModal({ isOpen, onClose }: ExportModalProps) {
                     Montagestützpunkt Gießen<br>
                     Kropbacher Weg 19, 35398 Gießen<br>
                     E-Mail: info@zenit-bau.de<br>
-                    Tel: 0641 / 6535157
+                    Tel: 0178 7270484
                 </p>
             </div>
             <div>

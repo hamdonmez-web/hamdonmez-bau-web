@@ -496,7 +496,7 @@ export default function App() {
                     <div>
                       <h4 className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-2">Kontakt / Kommunikation</h4>
                       <p className="text-slate-600 font-light text-sm">
-                        Telefon: <a href="tel:+496416535157" className="text-[#cc0000] hover:underline font-normal">0641 / 6535157</a><br />
+                        Telefon: <a href="tel:+491787270484" className="text-[#cc0000] hover:underline font-normal">0178 7270484</a><br />
                         E-Mail: <a href="mailto:info@zenit-bau.de" className="text-[#cc0000] hover:underline font-normal">info@zenit-bau.de</a><br />
                         Webseite: <span className="text-slate-900 font-normal">www.zenit-bau.de</span>
                       </p>
@@ -588,7 +588,7 @@ export default function App() {
                       Kropbacher Weg 19<br />
                       35398 Gießen<br />
                       E-Mail: <a href="mailto:info@zenit-bau.de" className="text-[#cc0000] hover:underline font-normal">info@zenit-bau.de</a><br />
-                      Telefon: <a href="tel:+496416535157" className="text-[#cc0000] hover:underline font-normal">0641 / 6535157</a>
+                      Telefon: <a href="tel:+491787270484" className="text-[#cc0000] hover:underline font-normal">0178 7270484</a>
                     </div>
                   </section>
 

@@ -70,8 +70,8 @@ export default function Footer({ onChangeTab }: FooterProps) {
               </div>
               <div className="flex items-center">
                 <Phone size={15} className="text-white/60 mr-2.5 shrink-0" />
-                <a href="tel:+496416535157" className="text-slate-300 hover:text-white transition-colors font-semibold">
-                  0641 / 6535157
+                <a href="tel:+491787270484" className="text-slate-300 hover:text-white transition-colors font-semibold">
+                  0178 7270484
                 </a>
               </div>
             </div>

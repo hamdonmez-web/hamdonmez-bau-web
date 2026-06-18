@@ -60,9 +60,9 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
               <Mail size={11} className="mr-1.5 text-zinc-400" />
               info@zenit-bau.de
             </a>
-            <a href="tel:+496416535157" className="flex items-center hover:text-white transition-colors text-zinc-300">
+            <a href="tel:+491787270484" className="flex items-center hover:text-white transition-colors text-zinc-300">
               <Phone size={11} className="mr-1.5 animate-pulse text-zinc-400" />
-              0641 / 6535157
+              0178 7270484
             </a>
           </div>
         </div>
@@ -164,11 +164,11 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
                     info@zenit-bau.de
                   </a>
                   <a
-                    href="tel:+496416535157"
+                    href="tel:+491787270484"
                     className="flex items-center text-zinc-700 hover:text-zinc-950 text-xs font-semibold uppercase tracking-wider"
                   >
                     <Phone className="mr-2 text-zinc-500" size={14} />
-                    Telefon: 0641 / 6535157
+                    Telefon: 0178 7270484
                   </a>
                   <button
                     onClick={() => {
