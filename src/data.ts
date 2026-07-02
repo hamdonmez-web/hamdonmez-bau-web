@@ -1,10 +1,14 @@
 import { ServiceItem, PromoCampaign } from './types';
+import heroImg from './assets/images/modern_apartment_building_1783021075729.jpg';
+import windowImg from './assets/images/modern_window_1781111287014.png';
+import doorImg from './assets/images/modern_door_1781111297940.png';
+import installationImg from './assets/images/window_installation_1781111308997.png';
 
 export const IMAGE_ASSETS = {
-  hero: '/src/assets/images/modern_apartment_building_1783021075729.jpg',
-  window: '/src/assets/images/modern_window_1781111287014.png',
-  door: '/src/assets/images/modern_door_1781111297940.png',
-  installation: '/src/assets/images/window_installation_1781111308997.png',
+  hero: heroImg,
+  window: windowImg,
+  door: doorImg,
+  installation: installationImg,
   // High-quality architectural Unsplash images for secondary visuals
   doorAlt: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
   windowAlt: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
