@@ -119,7 +119,7 @@ export default function Products({ onSelectService }: ProductsProps) {
                     <img 
                       src={service.imageUrl} 
                       alt={service.title} 
-                      className="w-full h-full object-cover grayscale opacity-85 hover:grayscale-0 hover:opacity-100 transition duration-300"
+                      className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
                     />
                   </div>
