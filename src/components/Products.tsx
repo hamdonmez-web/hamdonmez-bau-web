@@ -103,13 +103,13 @@ export default function Products({ onSelectService }: ProductsProps) {
               <div 
                 key={service.id}
                 className={`bg-white p-8 border rounded-2xl flex flex-col justify-between hover:shadow-lg transition-all ${
-                  isExpanded ? 'border-zinc-900 ring-2 ring-zinc-900/10' : 'border-slate-150'
+                  isExpanded ? 'border-brand ring-2 ring-brand/15' : 'border-slate-150 hover:border-brand-muted'
                 }`}
               >
                 <div>
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="font-bold text-slate-900 text-base sm:text-lg leading-snug">{service.title}</h3>
-                    <span className="px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider" style={{ backgroundColor: "#1e293b11", color: "#1e293b" }}>
+                    <span className="px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider bg-brand-light text-brand">
                       {startingTags[idx].price}
                     </span>
                   </div>
@@ -130,15 +130,14 @@ export default function Products({ onSelectService }: ProductsProps) {
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <button
                     onClick={() => setActiveDetailId(activeDetailId === service.id ? null : service.id)}
-                    className="text-slate-500 hover:text-zinc-900 text-[11px] font-semibold uppercase tracking-wider cursor-pointer"
+                    className="text-slate-500 hover:text-brand text-[11px] font-semibold uppercase tracking-wider cursor-pointer transition-colors duration-200"
                   >
                     {isExpanded ? 'Details verbergen' : 'Details einblenden'}
                   </button>
                   
                   <button
                     onClick={() => handleCtaClick(service.id)}
-                    className="text-white hover:brightness-110 px-4 py-2 font-bold text-[10px] uppercase tracking-wider transition hover:shadow-md flex items-center gap-1 shrink-0 cursor-pointer"
-                    style={{ backgroundColor: "#0f172a" }}
+                    className="bg-brand hover:bg-brand-hover text-white px-4 py-2 font-bold text-[10px] uppercase tracking-wider transition-all duration-300 hover:shadow-md hover:shadow-brand/25 flex items-center gap-1 shrink-0 cursor-pointer"
                   >
                     <span>Anfragen</span>
                     <ArrowRight size={10} style={{ color: "#ffffff" }} />
@@ -167,11 +166,11 @@ export default function Products({ onSelectService }: ProductsProps) {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div className="lg:col-span-7 space-y-6">
                       <div className="flex items-center space-x-3 text-[11px] uppercase tracking-widest font-mono">
-                        <span className="bg-zinc-800 border border-zinc-700 px-3 py-1 rounded text-zinc-300 font-bold">
+                        <span className="bg-brand text-white border border-brand/20 px-3 py-1 rounded font-bold shadow-sm">
                           DETAILED INFO
                         </span>
-                        <span className="text-zinc-450 text-zinc-450 text-zinc-400 flex items-center">
-                          <Check size={12} className="mr-1 text-zinc-400" />
+                        <span className="text-brand flex items-center font-semibold">
+                          <Check size={12} className="mr-1 text-brand" />
                           Garantierte Premium-Qualität
                         </span>
                       </div>
@@ -187,7 +186,7 @@ export default function Products({ onSelectService }: ProductsProps) {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                         {service.features.map((feat, i) => (
                           <div key={i} className="flex items-start space-x-2">
-                            <span className="flex items-center justify-center w-4.5 h-4.5 rounded-full bg-zinc-800 text-zinc-300 text-[10px] shrink-0 mt-0.5 font-bold">
+                            <span className="flex items-center justify-center w-4.5 h-4.5 rounded-full bg-brand text-white text-[10px] shrink-0 mt-0.5 font-bold shadow-xs">
                               ✓
                             </span>
                             <span className="text-zinc-300 text-xs font-medium leading-normal">{feat}</span>
@@ -203,7 +202,7 @@ export default function Products({ onSelectService }: ProductsProps) {
                       
                       <div className="space-y-4">
                         <div className="flex items-start space-x-3 text-xs">
-                          <div className="text-zinc-400 font-bold mt-0.5">✓</div>
+                          <div className="text-brand font-bold mt-0.5">✓</div>
                           <div>
                             <p className="font-bold text-slate-100 uppercase tracking-wider">Regionale Meisterbetreuung</p>
                             <p className="text-zinc-400 mt-1">Wir betreuen Sie permanent vor Ort im Raum Mittelhessen.</p>
@@ -211,7 +210,7 @@ export default function Products({ onSelectService }: ProductsProps) {
                         </div>
 
                         <div className="flex items-start space-x-3 text-xs">
-                          <div className="text-zinc-400 font-bold mt-0.5">✓</div>
+                          <div className="text-brand font-bold mt-0.5">✓</div>
                           <div>
                             <p className="font-bold text-slate-100 uppercase tracking-wider">Verbindlicher Festpreis</p>
                             <p className="text-zinc-400 mt-1">Zuverlässiges Angebot ohne versteckte Bearbeitungsgebühren.</p>
@@ -221,7 +220,7 @@ export default function Products({ onSelectService }: ProductsProps) {
 
                       <button
                         onClick={() => handleCtaClick(service.id)}
-                        className="w-full bg-white hover:bg-zinc-200 text-zinc-950 font-bold py-3.5 tracking-wider text-xs uppercase hover:brightness-110 active:scale-95 transition-all text-center rounded-none cursor-pointer"
+                        className="w-full bg-brand hover:bg-brand-hover text-white font-bold py-3.5 tracking-wider text-xs uppercase hover:shadow-lg hover:shadow-brand/25 active:scale-95 transition-all duration-300 text-center rounded-none cursor-pointer"
                       >
                         Projekt {service.title} anfragen
                       </button>

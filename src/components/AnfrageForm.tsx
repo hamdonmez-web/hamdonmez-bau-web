@@ -172,7 +172,7 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
           {/* Form Left Pillar */}
           <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-28">
             <div className="space-y-4">
-              <span className="font-mono text-xs tracking-[0.2em] font-extrabold uppercase bg-white/10 border border-white/20 px-4 py-1.5 rounded-none inline-block text-white">
+              <span className="font-mono text-xs tracking-[0.2em] font-extrabold uppercase bg-brand/10 border border-brand/30 px-4 py-1.5 rounded-none inline-block text-brand shadow-sm">
                 Kostenlose Anfrage
               </span>
               <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight">
@@ -186,26 +186,26 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
             {/* Quality Check List */}
             <div className="space-y-4 pt-4 border-t border-white/5">
               <h4 className="text-white font-bold text-xs uppercase tracking-wider flex items-center">
-                <Sparkles size={14} className="text-zinc-405 text-zinc-400 mr-2 shrink-0 animate-pulse" />
+                <Sparkles size={14} className="text-brand mr-2 shrink-0 animate-pulse" />
                 <span>Ihr Ablauf bei uns:</span>
               </h4>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-zinc-900 text-white text-xs font-bold mr-3 mt-0.5 shrink-0 border border-white/10">1</div>
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-brand text-white text-xs font-bold mr-3 mt-0.5 shrink-0 border border-brand/20 shadow-sm">1</div>
                   <div>
                     <strong className="text-[11px] uppercase tracking-wider text-slate-100 block">Formular ausfüllen</strong>
                     <span className="text-xs text-slate-400 font-light">Teilen Sie uns Ihre Wünsche mit (Dauer weniger als 2 Min.).</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-zinc-900 text-white text-xs font-bold mr-3 mt-0.5 shrink-0 border border-white/10">2</div>
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-brand text-white text-xs font-bold mr-3 mt-0.5 shrink-0 border border-brand/20 shadow-sm">2</div>
                   <div>
                     <strong className="text-[11px] uppercase tracking-wider text-slate-100 block">Kostenloses Telefonat</strong>
                     <span className="text-xs text-slate-400 font-light">Wir klären alle technischen Fragen und stimmen einen Vororttermin ab.</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-zinc-900 text-white text-xs font-bold mr-3 mt-0.5 shrink-0 border border-white/10">3</div>
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-brand text-white text-xs font-bold mr-3 mt-0.5 shrink-0 border border-brand/20 shadow-sm">3</div>
                   <div>
                     <strong className="text-[11px] uppercase tracking-wider text-slate-100 block">Unverbindliches Festpreisangebot</strong>
                     <span className="text-xs text-slate-400 font-light">Sie erhalten ein verbindliches schriftliches Angebot ohne versteckte Kosten.</span>
@@ -462,16 +462,16 @@ export default function AnfrageForm({ selectedService, setSelectedService }: Anf
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-white text-zinc-950 hover:bg-zinc-200 font-bold text-center py-4 cursor-pointer shadow-xl flex items-center justify-center space-x-2.5 transition-all text-xs uppercase tracking-wider rounded-none"
+                      className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-center py-4 cursor-pointer shadow-xl hover:shadow-brand/25 flex items-center justify-center space-x-2.5 transition-all duration-300 text-xs uppercase tracking-wider rounded-none"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-4.5 h-4.5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                          <div className="w-4.5 h-4.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                           <span>Ihre Anfrage wird gesendet...</span>
                         </>
                       ) : (
                         <>
-                          <Send size={13} style={{ color: "#000000" }} />
+                          <Send size={13} className="text-white animate-pulse" />
                           <span>Projekt starten / Anfrage Senden</span>
                         </>
                       )}

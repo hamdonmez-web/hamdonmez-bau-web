@@ -98,10 +98,10 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
               <a
                 key={item.id}
                 onClick={() => handleTabClick(item.id)}
-                className={`font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer relative py-2 shrink-0 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[#cc0000] after:transition-all ${
+                className={`font-bold text-xs uppercase tracking-wider transition-all cursor-pointer relative py-2 shrink-0 after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:bg-brand after:transition-all ${
                   activeTab === item.id 
-                    ? 'text-[#111111] after:w-full font-bold' 
-                    : 'text-zinc-600 hover:text-[#111111] after:w-0 hover:after:w-full'
+                    ? 'text-brand after:w-full font-extrabold' 
+                    : 'text-zinc-600 hover:text-brand after:w-0 hover:after:w-full'
                 }`}
               >
                 {item.label}
@@ -109,7 +109,7 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
             ))}
             <button
               onClick={onOpenInquiry}
-              className="bg-zinc-950 text-white hover:bg-zinc-800 active:scale-95 px-6 py-3.5 shadow-md transition-all cursor-pointer font-bold text-xs uppercase tracking-wider rounded-none shrink-0 ml-2"
+              className="bg-brand text-white hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 active:scale-95 px-6 py-3.5 shadow-md transition-all duration-300 cursor-pointer font-bold text-xs uppercase tracking-wider rounded-none shrink-0 ml-2"
               id="desktop-cta-btn"
             >
               Angebot anfordern
@@ -175,7 +175,7 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
                       setIsOpen(false);
                       onOpenInquiry();
                     }}
-                    className="w-full bg-zinc-950 text-white font-bold text-center py-3.5 text-xs uppercase tracking-wider hover:bg-zinc-800 active:scale-95 transition-all block cursor-pointer"
+                    className="w-full bg-brand text-white font-bold text-center py-3.5 text-xs uppercase tracking-wider hover:bg-brand-hover active:scale-95 transition-all block cursor-pointer"
                   >
                     Angebot anfordern
                   </button>
