@@ -19,7 +19,7 @@ export default function Footer({ onChangeTab }: FooterProps) {
   };
 
   return (
-    <footer className="bg-slate-950 text-slate-400 pt-20 pb-12 border-t border-white/5 overflow-hidden relative">
+    <footer className="bg-zinc-950 text-slate-400 pt-20 pb-12 border-t border-white/5 overflow-hidden relative">
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
         {/* Main Grid content */}
