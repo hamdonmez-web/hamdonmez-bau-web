@@ -13,14 +13,14 @@ export default function Promo() {
     <section id="angebote" className="py-24 bg-slate-900 text-white relative overflow-hidden">
       {/* Decorative ambient gradients matching the modernist look */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(204,0,0,0.15),transparent_50%)]" />
-      <div className="absolute -left-20 bottom-0 w-96 h-96 bg-brand/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -left-20 bottom-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
         {/* Module Title */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-          <span className="inline-flex items-center space-x-1.5 bg-brand/10 border border-brand/20 text-brand font-mono text-xs uppercase tracking-widest px-4 py-1.5 rounded-full">
-            <Sparkles size={13} className="text-brand" />
+          <span className="inline-flex items-center space-x-1.5 bg-accent/10 border border-accent/20 text-accent font-mono text-xs uppercase tracking-widest px-4 py-1.5 rounded-full">
+            <Sparkles size={13} className="text-accent" />
             <span>Exklusiver Planungsvorteil 2026</span>
           </span>
           <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight font-sans">
@@ -37,12 +37,12 @@ export default function Promo() {
           {/* Main Campaign Visual & Text Card */}
           <div className="lg:col-span-8 bg-slate-950/80 border border-white/5 rounded-3xl p-8 sm:p-12 backdrop-blur-md flex flex-col justify-between space-y-8 relative overflow-hidden">
             {/* Corner Badge */}
-            <div className="absolute top-0 right-0 font-mono text-xs font-black uppercase tracking-wider py-2.5 px-6 rounded-bl-2xl text-white bg-brand shadow-md">
+            <div className="absolute top-0 right-0 font-mono text-xs font-black uppercase tracking-wider py-2.5 px-6 rounded-bl-2xl text-white bg-accent shadow-md">
               {SUMMER_PROMO.badge}
             </div>
 
             <div className="space-y-4">
-              <span className="text-brand font-bold uppercase tracking-widest text-xs block">
+              <span className="text-accent font-bold uppercase tracking-widest text-xs block">
                 {SUMMER_PROMO.subtitle}
               </span>
               <h3 className="text-2xl sm:text-3xl font-light text-white tracking-tight font-sans">
@@ -77,12 +77,12 @@ export default function Promo() {
               </div>
 
               {/* Action Double Upgrade */}
-              <div className="bg-brand/10 p-5 border border-brand/20 relative overflow-hidden">
-                <div className="absolute right-3 top-3 bg-brand text-white font-mono font-bold text-[9px] uppercase py-0.5 px-2 rounded">
+              <div className="bg-accent/10 p-5 border border-accent/20 relative overflow-hidden">
+                <div className="absolute right-3 top-3 bg-accent text-white font-mono font-bold text-[9px] uppercase py-0.5 px-2 rounded">
                   GRATIS INBEGRIFFEN
                 </div>
-                <span className="text-brand text-[10px] uppercase font-semibold font-mono tracking-wider">Zenit Bau Vorteil</span>
-                <p className="text-base font-bold text-brand mt-1">Vollständiges Statik-Paket</p>
+                <span className="text-accent text-[10px] uppercase font-semibold font-mono tracking-wider">Zenit Bau Advantage</span>
+                <p className="text-base font-bold text-accent mt-1">Vollständiges Statik-Paket</p>
                 <div className="mt-3 space-y-1.5 text-xs text-slate-300">
                   <div className="flex justify-between">
                     <span>Tragwerksvorplanung:</span>
@@ -104,12 +104,12 @@ export default function Promo() {
             {/* Bottom details and CTA */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/5">
               <div className="flex items-center text-slate-400 text-xs">
-                <Calendar size={14} className="text-brand mr-2" />
+                <Calendar size={14} className="text-accent mr-2" />
                 <span>Gültig für Angebote bis zum: <strong className="text-white font-semibold">{SUMMER_PROMO.validUntil}</strong></span>
               </div>
               <button
                 onClick={handleScrollToForm}
-                className="w-full sm:w-auto text-white font-bold text-xs uppercase tracking-wider py-3.5 px-6 bg-brand hover:bg-brand-hover active:scale-95 transition-all duration-300 text-center rounded-none cursor-pointer shadow-md hover:shadow-brand/20"
+                className="w-full sm:w-auto text-white font-bold text-xs uppercase tracking-wider py-3.5 px-6 bg-accent hover:bg-accent-hover active:scale-95 transition-all duration-300 text-center rounded-none cursor-pointer shadow-md hover:shadow-accent/20"
               >
                 Vorteil sichern
               </button>
@@ -119,14 +119,14 @@ export default function Promo() {
           {/* Pricing Highlight Card */}
           <div className="lg:col-span-4 bg-slate-950 border border-white/5 rounded-3xl p-8 flex flex-col justify-between text-center relative overflow-hidden">
             <div className="space-y-6">
-              <span className="font-mono text-[10px] text-brand tracking-wider font-extrabold uppercase">
+              <span className="font-mono text-[10px] text-accent tracking-wider font-extrabold uppercase">
                 Ersparnis-Wert
               </span>
               
               <div className="inline-flex w-24 h-24 bg-slate-900 border border-white/5 rounded-full items-center justify-center shadow-inner">
                 <div className="p-2">
                   <span className="text-2xl font-extrabold text-white block leading-none">1.500€</span>
-                  <span className="text-[9px] text-brand font-mono tracking-wider uppercase font-black">Spargutschein</span>
+                  <span className="text-[9px] text-accent font-mono tracking-wider uppercase font-black">Spargutschein</span>
                 </div>
               </div>
 
@@ -141,18 +141,18 @@ export default function Promo() {
             {/* Advantage List */}
             <div className="space-y-3 text-left py-4 border-t border-b border-white/5 my-6">
               <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <ShieldCheck size={13} className="text-brand animate-pulse" />
+                <ShieldCheck size={13} className="text-accent animate-pulse" />
                 <span className="text-[11px]">TÜV-geprüfte Statik-Modelle</span>
               </div>
               <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <TrendingDown size={13} className="text-brand" />
+                <TrendingDown size={13} className="text-accent" />
                 <span className="text-[11px]">Volle Kostensicherheit ab Minute 1</span>
               </div>
             </div>
 
             <button
               onClick={handleScrollToForm}
-              className="w-full text-white font-bold bg-brand hover:bg-brand-hover py-4 tracking-wider text-xs uppercase active:scale-95 transition-all text-center rounded-none cursor-pointer shadow-lg hover:shadow-brand/20"
+              className="w-full text-white font-bold bg-accent hover:bg-accent-hover py-4 tracking-wider text-xs uppercase active:scale-95 transition-all text-center rounded-none cursor-pointer shadow-lg hover:shadow-accent/20"
             >
               Unverbindlich Anfragen
             </button>

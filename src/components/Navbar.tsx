@@ -73,8 +73,8 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
          id="navbar-header"
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-[#F5F3EF]/95 backdrop-blur-md shadow-md border-b border-zinc-200/80'
-            : 'bg-[#F5F3EF] border-b border-zinc-200/40'
+            ? 'bg-zinc-950/95 backdrop-blur-md shadow-md border-b border-zinc-800/80'
+            : 'bg-zinc-950 border-b border-zinc-900/60'
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between gap-x-8 lg:gap-x-12">
@@ -89,7 +89,7 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
             className="flex items-center cursor-pointer group shrink-0"
             id="nav-logo-link"
           >
-            <Logo size="md" variant="dark" />
+            <Logo size="md" variant="light" />
           </a>
 
           {/* Desktop Navigation */}
@@ -101,7 +101,7 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
                 className={`font-bold text-xs uppercase tracking-wider transition-all cursor-pointer relative py-2 shrink-0 after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:bg-brand after:transition-all ${
                   activeTab === item.id 
                     ? 'text-brand after:w-full font-extrabold' 
-                    : 'text-zinc-600 hover:text-brand after:w-0 hover:after:w-full'
+                    : 'text-zinc-300 hover:text-brand after:w-0 hover:after:w-full'
                 }`}
               >
                 {item.label}
@@ -120,7 +120,7 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
           <div className="flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-zinc-800 hover:text-[#111111] p-2"
+              className="text-zinc-300 hover:text-white p-2"
               aria-label="Menü öffnen"
               id="mobile-menu-toggle"
             >
@@ -137,7 +137,7 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden bg-[#F5F3EF] border-b border-zinc-200"
+              className="md:hidden bg-zinc-950 border-b border-zinc-800"
               id="mobile-nav-panel"
             >
               <div className="px-6 pt-2 pb-6 space-y-3 font-sans">
@@ -147,27 +147,27 @@ export default function Navbar({ activeTab, onChangeTab, onOpenInquiry }: Navbar
                     onClick={() => handleTabClick(item.id)}
                     className={`block py-2.5 px-3 rounded text-xs font-semibold uppercase tracking-wider cursor-pointer ${
                       activeTab === item.id 
-                        ? 'text-zinc-950 bg-zinc-200/60 font-bold' 
-                        : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/30'
+                        ? 'text-brand bg-zinc-900 font-bold' 
+                        : 'text-zinc-300 hover:text-white hover:bg-zinc-900/50'
                     }`}
                   >
                     {item.label}
                   </a>
                 ))}
                 {/* Mobile call & mail links */}
-                <div className="p-3 border-t border-zinc-200 my-4 space-y-4">
+                <div className="p-3 border-t border-zinc-800 my-4 space-y-4">
                   <a
                     href="mailto:info@zenit-bau.de"
-                    className="flex items-center text-zinc-700 hover:text-zinc-950 text-xs font-semibold uppercase tracking-wider"
+                    className="flex items-center text-zinc-300 hover:text-white text-xs font-semibold uppercase tracking-wider"
                   >
-                    <Mail className="mr-2 text-zinc-500" size={14} />
+                    <Mail className="mr-2 text-zinc-400" size={14} />
                     info@zenit-bau.de
                   </a>
                   <a
                     href="tel:+491787270484"
-                    className="flex items-center text-zinc-700 hover:text-zinc-950 text-xs font-semibold uppercase tracking-wider"
+                    className="flex items-center text-zinc-300 hover:text-white text-xs font-semibold uppercase tracking-wider"
                   >
-                    <Phone className="mr-2 text-zinc-500" size={14} />
+                    <Phone className="mr-2 text-zinc-400" size={14} />
                     Telefon: 0178 7270484
                   </a>
                   <button

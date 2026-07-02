@@ -7,10 +7,14 @@
   --font-serif: "Cinzel", Georgia, Cambria, "Times New Roman", Times, serif;
 
   --color-brand: #cc0000;
-  --color-brand-hover: #e50000;
+  --color-brand-hover: #b30000;
   --color-brand-vibrant: #ff1a1a;
   --color-brand-light: #fef2f2;
   --color-brand-muted: #fee2e2;
+  --color-accent: #cc0000;
+  --color-accent-hover: #b30000;
+  --color-accent-light: #fef2f2;
+  --color-accent-muted: #fee2e2;
 }
 
 html {

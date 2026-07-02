@@ -23,9 +23,9 @@ export default function Logo({
 
   // Determine text color and mask background color based on variant
   // 'dark' = dark text for light background (#F5F3EF) -> mask is #F5F3EF
-  // 'light' = light text for dark background -> footer background is bg-slate-950/ #020617 -> mask is #020617
+  // 'light' = light text for dark background -> header/footer background is bg-zinc-950 / #09090b -> mask is #09090b
   const textColor = variant === 'light' ? '#F5F3EF' : '#111111';
-  const maskColor = variant === 'light' ? '#020617' : '#F5F3EF';
+  const maskColor = variant === 'light' ? '#09090b' : '#F5F3EF';
 
   return (
     <div className={`flex items-center shrink-0 pl-5 ${heightClasses[size]} ${className}`}>
