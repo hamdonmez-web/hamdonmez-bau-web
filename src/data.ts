@@ -2,7 +2,7 @@ import { ServiceItem, PromoCampaign } from './types';
 
 export const IMAGE_ASSETS = {
   hero: '/src/assets/images/Start-ilk.jpg',
-  window: '/src/assets/images/modern_window_1781111287014.png',
+  window: '/src/assets/images/Fenster-1.jpg',
   door: '/src/assets/images/modern_door_1781111297940.png',
   installation: '/src/assets/images/window_installation_1781111308997.png',
   // High-quality architectural Unsplash images for secondary visuals
