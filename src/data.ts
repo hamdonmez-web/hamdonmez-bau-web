@@ -2,7 +2,7 @@ import { ServiceItem, PromoCampaign } from './types';
 
 export const IMAGE_ASSETS = {
   hero: '/src/assets/images/Gemini_Generated_Image_sk0m8ysk0m8ysk0m.png',
-  window: '/src/assets/images/modern_window_1781111287014.png',
+  window: '/src/assets/images/Gemini_Generated_Image_sk0m8ysk0m8ysk0m.png',
   door: '/src/assets/images/modern_door_1781111297940.png',
   installation: '/src/assets/images/window_installation_1781111308997.png',
   // High-quality architectural Unsplash images for secondary visuals
